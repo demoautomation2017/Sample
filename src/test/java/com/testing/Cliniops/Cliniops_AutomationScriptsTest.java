@@ -48,7 +48,7 @@ WebDriver dr;
 		validateMsg(errorMsg, expectedText, error);
 	
 	}
-	public void loginErrorMessage1() throws IOException{
+	public void sucessFulLogin1() throws IOException{
 		
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		
@@ -56,18 +56,19 @@ WebDriver dr;
 		enterText(username, "Abhishek", "Username field");
 		
 		WebElement pwd= dr.findElement(By.id("password"));
-		enterText(pwd, "welcome", "Password field");
+		enterText(pwd, "Welcome123#", "Password field");
 		
 		WebElement authBtn= dr.findElement(By.id("Authenticate"));
 		clickObj(authBtn, "Authenticate Button");
+		Thread.sleep(3000);
 		
 		
 		WebElement dd1=dr.findElement(By.id("investigator_study"));
 		dropDown(dd1, 0);
+		Thread.sleep(3000);
 
 		WebElement dd2=dr.findElement(By.name("lang_type"));
 		Select select = new Select(dd2);
-		//dropDown(dd2, 0);
 		select.selectByValue("1");
 		
 		WebElement clickLogin= dr.findElement(By.className("login-btnew disable"));
