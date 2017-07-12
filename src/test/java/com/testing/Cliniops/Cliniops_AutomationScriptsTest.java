@@ -1,5 +1,12 @@
 package com.testing.Cliniops;
 
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 
 WebDriver dr;
@@ -81,3 +88,64 @@ WebDriver dr;
 
 
 }
+		 @Test
+		 public void loginErrorMessage3() throws IOException, InterruptedException{
+		  
+		  dr.get("https://bridgetherapeutics.cliniops.com");
+		  
+		  WebElement username= dr.findElement(By.id("username"));
+		  enterText(username, "", "Username field");
+		  
+		  WebElement pwd= dr.findElement(By.id("password"));
+		  enterText(pwd, "", "Password field");
+		  Thread.sleep(4000);
+		  WebElement authBtn= dr.findElement(By.id("Authenticate"));
+		  clickObj(authBtn, "Authenticate Button");
+		  WebElement usererrorMsg=dr.findElement(By.xpath("//*[text()='Please enter the username']"));
+		  
+		  WebElement pwderrorMsg=dr.findElement(By.xpath("//*[@id='login']/div[2]/label"));
+		  String error2= pwderrorMsg.getText();
+		  String expectedText2="Please enter the password";
+		  validateMsg(pwderrorMsg, expectedText2, error2);
+		  Thread.sleep(3000);
+		 }
+		 
+		 @Test
+		 public void forgotPassword() throws IOException, InterruptedException{
+			 
+			 dr.get("https://bridgetherapeutics.cliniops.com");
+			 
+			 WebElement username= dr.findElement(By.id("username"));
+			  enterText(username, "Abhishek", "Username field");
+			 Thread.sleep(3000);
+			 WebElement forgotPwd=dr.findElement(By.linkText("Forgot password..? Click here..."));
+			 forgotPwd.click();
+			 Thread.sleep(3000);
+			 WebElement email=dr.findElement(By.id("forgotemail"));
+			 enterText(email, "abc@gmail.com", "Email id");
+			 Thread.sleep(3000);
+			 WebElement requestNewPwd=dr.findElement(By.id("req_new_pass"));
+			 clickObj(requestNewPwd, "Request new password");
+			 Thread.sleep(3000);
+			 WebElement emailIdError=dr.findElement(By.id("errorserver"));
+			 String errorMsg=emailIdError.getText();
+			 String actualErrorMsg="Email-id does not exist in database.";
+			 validateMsg(emailIdError, actualErrorMsg, errorMsg);
+			 Thread.sleep(3000);
+			 WebElement backToLogin=dr.findElement(By.linkText("Back to Login"));
+			 backToLogin.click();
+			 Thread.sleep(5000);
+		 }
+		 
+		@AfterMethod
+		
+			public void closeBrowser(){
+			dr.close();
+		}
+
+
+	}
+
+	
+
+
