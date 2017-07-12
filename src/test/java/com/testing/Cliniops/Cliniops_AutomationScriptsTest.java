@@ -89,6 +89,30 @@ WebDriver dr;
 
 }
 		 @Test
+		 public void loginErrorMessage2() throws IOException, InterruptedException{
+		  
+		  dr.get("https://bridgetherapeutics.cliniops.com");
+		  
+		  WebElement username= dr.findElement(By.id("username"));
+		  enterText(username, "", "Username field");
+		  
+		  WebElement pwd= dr.findElement(By.id("password"));
+		  enterText(pwd, "", "Password field");
+		  Thread.sleep(4000);
+		  WebElement authBtn= dr.findElement(By.id("Authenticate"));
+		  clickObj(authBtn, "Authenticate Button");
+		  WebElement usererrorMsg=dr.findElement(By.xpath("//*[text()='Please enter the username']"));
+		  String error1= usererrorMsg.getText();
+		  String expectedText1="Please enter the user name";
+		  validateMsg(usererrorMsg, expectedText1, error1);
+		  WebElement pwderrorMsg=dr.findElement(By.xpath("//*[text()='Please enter the password']"));
+		  String error2= pwderrorMsg.getText();
+		  String expectedText2="Please enter the password";
+		  validateMsg(pwderrorMsg, expectedText2, error2);
+	 }
+		 
+		 
+		 @Test
 		 public void loginErrorMessage3() throws IOException, InterruptedException{
 		  
 		  dr.get("https://bridgetherapeutics.cliniops.com");
