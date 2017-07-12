@@ -2,7 +2,29 @@ package com.testing.Cliniops;
 
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 
-WebDriver dr= new FireFoxDriver();
+WebDriver dr;
+
+	@BeforeTest
+	@Parameters("browser")
+	public void Selectbrowser(String browser){
+		if(browser.equalsIgnoreCase("firefox")){
+			System.setProperty("webdriver.firefox.marionette", "C:/Users/Zunaira's/Documents/QA automation/geckodriver-v0.16.1-win64/geckodriver.exe");
+			dr=new FirefoxDriver();	
+			dr.manage().window().maximize();
+
+		}
+		else if(browser.equalsIgnoreCase("chrome")){
+			System.setProperty("webdriver.chrome.driver", "C:/Users/Zunaira's/Documents/QA automation/chromedriver.exe");
+			dr=new ChromeDriver();
+
+		}
+		else if(browser.equalsIgnoreCase("IE")){
+			System.setProperty("webdriver.ie.driver", "C:/Users/Zunaira's/Documents/QA automation/IEDriverServer.exe");
+	        dr=new InternetExplorerDriver();
+		}
+		dr.manage().window().maximize();
+	}
+	
 
 	@Test
 	public void loginErrorMessage1() throws IOException{
