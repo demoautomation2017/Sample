@@ -8,18 +8,18 @@ WebDriver dr;
 	@Parameters("browser")
 	public void Selectbrowser(String browser){
 		if(browser.equalsIgnoreCase("firefox")){
-			System.setProperty("webdriver.firefox.marionette", "C:/Users/Zunaira's/Documents/QA automation/geckodriver-v0.16.1-win64/geckodriver.exe");
+			//System.setProperty("webdriver.firefox.marionette", "C:/Users/Zunaira's/Documents/QA automation/geckodriver-v0.16.1-win64/geckodriver.exe");
 			dr=new FirefoxDriver();	
 			dr.manage().window().maximize();
 
 		}
 		else if(browser.equalsIgnoreCase("chrome")){
-			System.setProperty("webdriver.chrome.driver", "C:/Users/Zunaira's/Documents/QA automation/chromedriver.exe");
+			//System.setProperty("webdriver.chrome.driver", "C:/Users/Zunaira's/Documents/QA automation/chromedriver.exe");
 			dr=new ChromeDriver();
 
 		}
 		else if(browser.equalsIgnoreCase("IE")){
-			System.setProperty("webdriver.ie.driver", "C:/Users/Zunaira's/Documents/QA automation/IEDriverServer.exe");
+			//System.setProperty("webdriver.ie.driver", "C:/Users/Zunaira's/Documents/QA automation/IEDriverServer.exe");
 	        dr=new InternetExplorerDriver();
 		}
 		dr.manage().window().maximize();
@@ -48,6 +48,7 @@ WebDriver dr;
 		validateMsg(errorMsg, expectedText, error);
 	
 	}
+	@Test
 	public void sucessFulLogin1() throws IOException{
 		
 		dr.get("https://bridgetherapeutics.cliniops.com");
