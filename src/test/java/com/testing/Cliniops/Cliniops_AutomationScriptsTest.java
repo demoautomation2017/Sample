@@ -16,13 +16,15 @@ WebDriver dr;
 		else if(browser.equalsIgnoreCase("chrome")){
 			//System.setProperty("webdriver.chrome.driver", "C:/Users/Zunaira's/Documents/QA automation/chromedriver.exe");
 			dr=new ChromeDriver();
+			dr.manage().window().maximize();
 
 		}
 		else if(browser.equalsIgnoreCase("IE")){
 			//System.setProperty("webdriver.ie.driver", "C:/Users/Zunaira's/Documents/QA automation/IEDriverServer.exe");
 	        dr=new InternetExplorerDriver();
+	        dr.manage().window().maximize();
 		}
-		dr.manage().window().maximize();
+		
 	}
 	
 
