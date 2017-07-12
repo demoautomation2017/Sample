@@ -2,11 +2,13 @@ package com.testing.Cliniops;
 
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 
-WebDriver dr;
-	
+WebDriver dr= new FireFoxDriver();
+
+	@Test
 	public void loginErrorMessage1() throws IOException{
 		
 		dr.get("https://bridgetherapeutics.cliniops.com");
+		Thread.sleep(3000);
 		
 		WebElement username= dr.findElement(By.id("username"));
 		enterText(username, "Abhishek", "Username field");
