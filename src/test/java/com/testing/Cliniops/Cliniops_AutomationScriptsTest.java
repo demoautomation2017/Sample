@@ -30,6 +30,7 @@ WebDriver dr;
 			//System.setProperty("webdriver.ie.driver", "C:/Users/Zunaira's/Documents/QA automation/IEDriverServer.exe");
 	        dr=new InternetExplorerDriver();
 	        dr.manage().window().maximize();
+	        
 		}
 		
 	}
