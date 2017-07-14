@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests">
-	<test name="Test" allow-return-values="true">
+	 <test name="Test" allow-return-values="true">
 		<parameter name="browser" value="firefox" />
 		<classes>
 
@@ -16,7 +16,7 @@
 
 			</class>
 		</classes>
-	</test> <!-- Test -->
+	</test> Test
 	 <test name="ChromeTest" allow-return-values="true">
 		<parameter name="browser" value="chrome" />
 		<classes>
@@ -33,8 +33,8 @@
 			</class>
 
 		</classes>
-	</test>
-	<test name="IETest" allow-return-values="true">
+	</test> 
+	  <test name="IETest" allow-return-values="true">
 		<parameter name="browser" value="IE" />
 		<classes>
 
@@ -49,6 +49,6 @@
 
 			</class>
 
-		</classes>
-	</test>  
+		</classes> 
+	</test>   
 </suite> <!-- Suite -->
