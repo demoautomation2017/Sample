@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -57,6 +58,7 @@ WebDriver dr;
 		
 	}
 	
+    
 
 	@Test (enabled = false)
 	public void loginErrorMessage1() throws IOException, InterruptedException{
@@ -215,6 +217,69 @@ WebDriver dr;
 			 backToLogin.click();
 			 Thread.sleep(5000);
 		 }
+		 
+		 
+		 @Test
+		 	public void auto_clini_login_001() throws Exception{
+			 		String expectedTooltipText;
+			 		String actualTooltipText;
+			 		Actions tooltip;
+			 		dr.get("https://bridgetherapeutics.cliniops.com");
+			 		
+			 		WebElement usrname=dr.findElement(By.id("username"));
+			 		Thread.sleep(5000);
+			 		tooltip = new Actions(dr);
+			 		tooltip.moveToElement(usrname).build().perform();
+			 		Thread.sleep(5000);
+			 		//actualTooltipText=usrname.getAttribute("title");
+			 		expectedTooltipText="Enter Username";
+			 		validateMsg_Attribute(usrname, expectedTooltipText, "username tooltip", "title");
+
+			 		WebElement password=dr.findElement(By.id("password"));
+			 		Thread.sleep(5000);
+			 		tooltip = new Actions(dr);
+			 		tooltip.moveToElement(password).build().perform();
+			 		Thread.sleep(5000);
+			 		
+			 		expectedTooltipText="Enter Password";
+			 		validateMsg_Attribute(password, expectedTooltipText, "password tooltip", "title");
+			 
+			 		WebElement authenticate=dr.findElement(By.id("Authenticate"));
+			 		Thread.sleep(5000);
+			 		tooltip = new Actions(dr);
+			 		tooltip.moveToElement(authenticate).build().perform();
+			 		Thread.sleep(5000);
+			 		
+			 		expectedTooltipText="Authenticate";
+			 		validateMsg_Attribute(authenticate, expectedTooltipText, "Authenticate tooltip", "title");
+
+			 		
+			 		usrname.sendKeys("Abhishek");
+			 		password.sendKeys("Welcome123#");
+			 		ButtonClick(authenticate, "AuthenticateButton");
+			 		
+			 		WebElement selectLang=dr.findElement(By.id("lang_type"));
+			 		Thread.sleep(5000);
+			 		tooltip = new Actions(dr);
+			 		tooltip.moveToElement(authenticate).build().perform();
+			 		Thread.sleep(5000);
+			 		
+			 		expectedTooltipText="Select Language";
+			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select lang tooltip", "title");
+			 
+
+			 		
+			 		WebElement loginBtn=dr.findElement(By.xpath(".//*[@id='login']/div[7]/input"));
+			 		Thread.sleep(5000);
+			 		tooltip = new Actions(dr);
+			 		tooltip.moveToElement(loginBtn).build().perform();
+			 		Thread.sleep(5000);
+			 		
+			 		expectedTooltipText="Login";
+			 		validateMsg_Attribute(loginBtn, expectedTooltipText, "login tooltip", "title");
+			 		
+
+		 	}
 		 
 		@AfterMethod
 		

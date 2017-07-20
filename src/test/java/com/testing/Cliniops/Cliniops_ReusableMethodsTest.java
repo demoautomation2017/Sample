@@ -153,6 +153,28 @@ public class Cliniops_ReusableMethodsTest {
 					System.out.println("Fail: " + objName+ " is not displayed, please check your application");
 				}
 			}
+			/* 
+			 * Name of the Method: validateMsg_Attribute
+			 * Brief description : validate message displayed on the web page
+			 * Arguments: obj --> Webelement Object,  expectedText --> expected text to be displayed, objName --> name of the object
+			 * Created by: Automation team
+			 * Creation date : July 20 2017
+			 * last modified: July 20 2017
+			 * 
+			 * */	
+
+			public static void validateMsg_Attribute(WebElement obj, String expectedText, String objName,String attributeName){
+				if(obj.isDisplayed()){
+					String actualText = obj.getAttribute(attributeName);
+					if(expectedText.equals(actualText)){
+						System.out.println("Pass: Actual message is matching with expected message " + actualText);
+					}else{
+						System.out.println("Fail: Actual message '" + actualText + "' is not matching with expected message '"+ expectedText+"'  ,Please check your application");
+					}
+				}else{
+					System.out.println("Fail: " + objName+ " is not displayed, please check your application");
+				}
+			}
 			
 			//Name of the method:Readingtext
 				//Brief description:Reading text box value
