@@ -227,28 +227,28 @@ WebDriver dr;
 			 		dr.get("https://bridgetherapeutics.cliniops.com");
 			 		
 			 		WebElement usrname=dr.findElement(By.id("username"));
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(usrname).build().perform();
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		//actualTooltipText=usrname.getAttribute("title");
 			 		expectedTooltipText="Enter Username";
 			 		validateMsg_Attribute(usrname, expectedTooltipText, "username tooltip", "title");
 
 			 		WebElement password=dr.findElement(By.id("password"));
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(password).build().perform();
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		
 			 		expectedTooltipText="Enter Password";
 			 		validateMsg_Attribute(password, expectedTooltipText, "password tooltip", "title");
 			 
 			 		WebElement authenticate=dr.findElement(By.id("Authenticate"));
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(authenticate).build().perform();
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		
 			 		expectedTooltipText="Authenticate";
 			 		validateMsg_Attribute(authenticate, expectedTooltipText, "Authenticate tooltip", "title");
@@ -259,10 +259,10 @@ WebDriver dr;
 			 		ButtonClick(authenticate, "AuthenticateButton");
 			 		
 			 		WebElement selectLang=dr.findElement(By.id("lang_type"));
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(authenticate).build().perform();
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		
 			 		expectedTooltipText="Select Language";
 			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select lang tooltip", "title");
@@ -273,7 +273,7 @@ WebDriver dr;
 			 		Thread.sleep(5000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(loginBtn).build().perform();
-			 		Thread.sleep(5000);
+			 		Thread.sleep(3000);
 			 		
 			 		expectedTooltipText="Login";
 			 		validateMsg_Attribute(loginBtn, expectedTooltipText, "login tooltip", "title");

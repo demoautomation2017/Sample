@@ -123,11 +123,13 @@ public class Cliniops_ReusableMethodsTest {
 						Update_Report("Pass","ErrorMessage","Actual message matching with expected message:"+Actualtext);
 						//System.out.println("Pass:Actual message matching with expected message:"+Actualtext);
 						}
-				else{Update_Report("Fail","ErrorMessage","Actual message not matching with expected message:"+Actualtext);
+				else{
+					Update_Report("Fail","ErrorMessage","Actual message not matching with expected message:"+Actualtext);
 					//System.out.println("Fail:Actual message not matching with expected message"+Actualtext);
 					}
 				}
-				else{Update_Report("Fail","ErrorMessage",objname+" is not displayed,please check your application");
+				else{
+					Update_Report("Fail","ErrorMessage",objname+" is not displayed,please check your application");
 					//System.out.println("Fail:"+objname+" is not displayed,please check your application");
 					}
 			}
@@ -163,16 +165,19 @@ public class Cliniops_ReusableMethodsTest {
 			 * 
 			 * */	
 
-			public static void validateMsg_Attribute(WebElement obj, String expectedText, String objName,String attributeName){
+			public static void validateMsg_Attribute(WebElement obj, String expectedText, String objName,String attributeName) throws IOException{
 				if(obj.isDisplayed()){
 					String actualText = obj.getAttribute(attributeName);
 					if(expectedText.equals(actualText)){
-						System.out.println("Pass: Actual message is matching with expected message " + actualText);
+						Update_Report("Pass","validateMsg_Attribute","Actual message matching with expected message:"+ actualText);
+						//System.out.println("Pass: Actual message is matching with expected message " + actualText);
 					}else{
-						System.out.println("Fail: Actual message '" + actualText + "' is not matching with expected message '"+ expectedText+"'  ,Please check your application");
+						Update_Report("Fail","validateMsg_Attribute","Actual message not matching with expected message:"+actualText);
+						//System.out.println("Fail: Actual message '" + actualText + "' is not matching with expected message '"+ expectedText+"'  ,Please check your application");
 					}
 				}else{
-					System.out.println("Fail: " + objName+ " is not displayed, please check your application");
+					Update_Report("Fail","validateMsg_Attribute",objName +"is not displayed, please check your application");
+					//System.out.println("Fail: " + objName+ " is not displayed, please check your application");
 				}
 			}
 			
