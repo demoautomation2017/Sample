@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 
 WebDriver dr;
-
+  
 	
     @BeforeMethod
 	@Parameters({"browser"})
@@ -50,60 +50,63 @@ WebDriver dr;
 		
 	}
 	
-		 @Test(enabled=false)
+		 @Test
 		 	public void auto_clini_login_001() throws Exception{
 			 
 			 		String expectedTooltipText;
 			 		String actualTooltipText;
 			 		Actions tooltip;
 			 		dr.get("https://bridgetherapeutics.cliniops.com");
+			 		tooltip = new Actions(dr);
 			 		
 			 		WebElement usrname=dr.findElement(By.id("username"));
-			 		Thread.sleep(3000);
-			 		tooltip = new Actions(dr);
-			 		tooltip.moveToElement(usrname).build().perform();
-			 		
+			 		Thread.sleep(3000);			 		
+			 		tooltip.moveToElement(usrname).build().perform();			 		
 			 		expectedTooltipText="Enter Username";
 			 		validateMsg_Attribute(usrname, expectedTooltipText, "username tooltip", "title");
 			 		
 			 		WebElement password=dr.findElement(By.id("password"));
 			 		Thread.sleep(3000);
-			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(password).build().perform();
-			 		Thread.sleep(3000);
-			 		
+			 		Thread.sleep(3000);			 		
 			 		expectedTooltipText="Enter Password";
 			 		validateMsg_Attribute(password, expectedTooltipText, "password tooltip", "title");
 			 
 			 		WebElement authenticate=dr.findElement(By.id("Authenticate"));
 			 		Thread.sleep(3000);
-			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(authenticate).build().perform();
-			 		Thread.sleep(3000);
-			 		
+			 		Thread.sleep(3000);			 		
 			 		expectedTooltipText="Authenticate";
 			 		validateMsg_Attribute(authenticate, expectedTooltipText, "Authenticate tooltip", "title");
 
 			 		
 			 		usrname.sendKeys("Abhishek");
-			 		password.sendKeys("Welcome123#");
-			 		ButtonClick(authenticate, "AuthenticateButton");
+					password.sendKeys("Welcome123#");
+					authenticate.click();
+					
+					Thread.sleep(2000);		
+					WebElement selectStudy=dr.findElement(By.id("investigator_study"));
+					Thread.sleep(2000);		
+					tooltip.moveToElement(selectStudy).build().perform();
+					Thread.sleep(2000);
+					//actualTooltipText=selectStudy.getAttribute("title");
+					expectedTooltipText="Select Study";
+					validateMsg_Attribute(selectStudy, expectedTooltipText, "select Study tooltip", "title");
+					//TooltipValidation(selectStudy, expectedTooltipText, actualTooltipText);
 			 		
 			 		WebElement selectLang=dr.findElement(By.id("lang_type"));
 			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(authenticate).build().perform();
-			 		Thread.sleep(3000);
-			 		
+			 		Thread.sleep(3000); 				 		
 			 		expectedTooltipText="Select Language";
-			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select lang tooltip", "title");
+			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select Lang tooltip", "title");
 			 
 			 		WebElement loginBtn=dr.findElement(By.xpath(".//*[@id='login']/div[7]/input"));
 			 		Thread.sleep(5000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(loginBtn).build().perform();
-			 		Thread.sleep(3000);
-			 		
+			 		Thread.sleep(3000);			 		
 			 		expectedTooltipText="Login";
 			 		validateMsg_Attribute(loginBtn, expectedTooltipText, "login tooltip", "title");
 			 		
@@ -120,6 +123,12 @@ WebDriver dr;
 			 validateMsg_Attribute(userNameObj, expected, "usernameObject", "value");
 			
 		 }
+		 @Test
+			public void auto_clini_login_009() throws IOException{
+				dr.get("https://bridgetherapeutics.cliniops.com/login");
+				WebElement selectstudy=dr.findElement(By.id("investigator_study"));
+				checkDisabled(selectstudy,"Select Study");			
+			}
 		 
 		@AfterMethod
 		
