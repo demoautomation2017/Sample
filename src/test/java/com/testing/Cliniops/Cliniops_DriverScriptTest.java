@@ -22,7 +22,6 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 		String[][] recData = Cliniops_ReusableMethodsTest.readSheet(testDataPath, "Sheet1");
 
 		String tc = null;
-
 		//looping through the rows
 		for(int i=0; i<recData.length; i++){
 
