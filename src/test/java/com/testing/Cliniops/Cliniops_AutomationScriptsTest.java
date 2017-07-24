@@ -26,7 +26,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 
 WebDriver dr;
 
-	//@BeforeTest
+	
     @BeforeMethod
 	@Parameters({"browser"})
 	public void Selectbrowser(String browser){
@@ -43,14 +43,6 @@ WebDriver dr;
 		}
 		else if(browser.equalsIgnoreCase("IE")){
 
-
-			// Create object of DesiredCapabilities class
-
-			DesiredCapabilities cap=DesiredCapabilities.internetExplorer();
-
-			// Set ACCEPT_SSL_CERTS  variable to true
-			//cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-	        //dr=new InternetExplorerDriver(cap);
 			dr=new InternetExplorerDriver();
 	        dr.manage().window().maximize();
 	        
@@ -62,8 +54,6 @@ WebDriver dr;
 
 	@Test (enabled = false)
 	public void loginErrorMessage1() throws IOException, InterruptedException{
-		System.out.println("check1.....");
-		//dr = new FirefoxDriver();
 		
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		Thread.sleep(3000);
@@ -78,18 +68,16 @@ WebDriver dr;
 		WebElement authBtn = dr.findElement(By.xpath(".//*[@id='Authenticate']"));
 		authBtn.click();
 		
-		
 		WebDriverWait wait = new WebDriverWait(dr, 30);
 		WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='role']/label[2]")));
-		//WebElement errorMsg=dr.findElement(By.xpath(".//*[@id='role']/label[2]"));
-		//WebElement errorMsg=dr.findElement(By.className("error"));
+		
 		String error= errorMsg.getText();
 		String expectedText="Authenitcation failed !";
 		
 		ErrorMessage(errorMsg, expectedText, error);
 	
 	}
-	@Test //(enabled = false)
+	@Test (enabled = false)
 	public void sucessFulLogin1() throws IOException, InterruptedException{
 		
 		//dr = new FirefoxDriver();
@@ -138,7 +126,7 @@ WebDriver dr;
 		}
 
 }
-		 @Test// (enabled = false)//(priority = 2)
+		 @Test (enabled = false)//(priority = 2)
 		 public void loginErrorMessage2() throws IOException, InterruptedException{
 			// dr = new FirefoxDriver();
 		  
@@ -164,7 +152,7 @@ WebDriver dr;
 	 }
 		 
 		 
-		 @Test//(enabled = false) //(priority = 3)
+		 @Test(enabled = false) //(priority = 3)
 		 public void loginErrorMessage3() throws IOException, InterruptedException{
 			 
 			// dr = new FirefoxDriver();
@@ -188,7 +176,7 @@ WebDriver dr;
 		  Thread.sleep(3000);
 		 }
 		 
-		 @Test// (enabled = false)// (priority = 4)
+		 @Test(enabled = false)// (priority = 4)
 		 public void forgotPassword() throws IOException, InterruptedException{
 			 
 			// dr = new FirefoxDriver();
@@ -219,8 +207,9 @@ WebDriver dr;
 		 }
 		 
 		 
-		 @Test
+		 @Test(enabled=false)
 		 	public void auto_clini_login_001() throws Exception{
+			 
 			 		String expectedTooltipText;
 			 		String actualTooltipText;
 			 		Actions tooltip;
@@ -230,11 +219,10 @@ WebDriver dr;
 			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(usrname).build().perform();
-			 		Thread.sleep(3000);
-			 		//actualTooltipText=usrname.getAttribute("title");
+			 		
 			 		expectedTooltipText="Enter Username";
 			 		validateMsg_Attribute(usrname, expectedTooltipText, "username tooltip", "title");
-
+			 		
 			 		WebElement password=dr.findElement(By.id("password"));
 			 		Thread.sleep(3000);
 			 		tooltip = new Actions(dr);
@@ -267,8 +255,6 @@ WebDriver dr;
 			 		expectedTooltipText="Select Language";
 			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select lang tooltip", "title");
 			 
-
-			 		
 			 		WebElement loginBtn=dr.findElement(By.xpath(".//*[@id='login']/div[7]/input"));
 			 		Thread.sleep(5000);
 			 		tooltip = new Actions(dr);
@@ -280,6 +266,17 @@ WebDriver dr;
 			 		
 
 		 	}
+		 @Test
+		 public void auto_clini_login_002() throws IOException{
+			 
+			 String expected = "Abhishek";
+			 dr.get("https://bridgetherapeutics.cliniops.com");
+			 WebElement userNameObj = dr.findElement(By.xpath(".//*[@id='username']"));
+			 enterText(userNameObj, "Abhishek", "userName object");
+			 String actual = userNameObj.getAttribute("value");
+			 validateMsg_Attribute(userNameObj, expected, "usernameObject", "value");
+			
+		 }
 		 
 		@AfterMethod
 		

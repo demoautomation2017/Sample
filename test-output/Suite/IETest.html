@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jul 14 16:10:13 PDT 2017</td>
+<td>Started on:</td><td>Sun Jul 23 21:36:58 PDT 2017</td>
 </tr>
-<tr><td>Total time:</td><td>23 seconds (23243 ms)</td>
+<tr><td>Total time:</td><td>4 seconds (4033 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,26 +75,50 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.testing.Cliniops.Cliniops_AutomationScriptsTest.loginErrorMessage1()'><b>loginErrorMessage1</b><br>Test class: com.testing.Cliniops.Cliniops_AutomationScriptsTest</td>
-<td><div><pre>java.lang.NullPointerException
-	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:212)
-	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:102)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:71)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
-	at com.testing.Cliniops.Cliniops_ReusableMethodsTest.toBeClickable(Cliniops_ReusableMethodsTest.java:108)
-	at com.testing.Cliniops.Cliniops_AutomationScriptsTest.loginErrorMessage1(Cliniops_AutomationScriptsTest.java:77)
+<td title='com.testing.Cliniops.Cliniops_AutomationScriptsTest.auto_clini_login_002()'><b>auto_clini_login_002</b><br>Test class: com.testing.Cliniops.Cliniops_AutomationScriptsTest</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with id == username (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 362 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
+System info: host: &apos;DESKTOP-7F3BC8M&apos;, ip: &apos;192.168.1.11&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_74&apos;
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{se:ieOptions={browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, ie.useLegacyFileUploadDialogHandling=false, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, initialBrowserUrl=http://localhost:48173/, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true}, browserName=internet explorer, pageLoadStrategy=normal, javascriptEnabled=true, version=11, platform=WINDOWS, unexpectedAlertBehaviour=dismiss}]
+Session ID: 4638ccc8-2856-4c32-bdcb-4952030da94c
+*** Element info: {Using=id, value=username}
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:413)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.testing.Cliniops.Cliniops_AutomationScriptsTest.auto_clini_login_002(Cliniops_AutomationScriptsTest.java:290)
 	at java.util.concurrent.FutureTask.run(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
-... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1424409619", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1424409619'><pre>java.lang.NullPointerException
-	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:212)
-	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:102)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:71)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
-	at com.testing.Cliniops.Cliniops_ReusableMethodsTest.toBeClickable(Cliniops_ReusableMethodsTest.java:108)
-	at com.testing.Cliniops.Cliniops_AutomationScriptsTest.loginErrorMessage1(Cliniops_AutomationScriptsTest.java:77)
+... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1357907772", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1357907772'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with id == username (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 362 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
+System info: host: &apos;DESKTOP-7F3BC8M&apos;, ip: &apos;192.168.1.11&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_74&apos;
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{se:ieOptions={browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, ie.useLegacyFileUploadDialogHandling=false, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, initialBrowserUrl=http://localhost:48173/, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true}, browserName=internet explorer, pageLoadStrategy=normal, javascriptEnabled=true, version=11, platform=WINDOWS, unexpectedAlertBehaviour=dismiss}]
+Session ID: 4638ccc8-2856-4c32-bdcb-4952030da94c
+*** Element info: {Using=id, value=username}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:413)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.testing.Cliniops.Cliniops_AutomationScriptsTest.auto_clini_login_002(Cliniops_AutomationScriptsTest.java:290)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -116,8 +140,8 @@ function toggleAllBoxes() {
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 </pre></div></td>
-<td>19</td>
-<td>com.testing.Cliniops.Cliniops_AutomationScriptsTest@6a41eaa2</td></tr>
+<td>0</td>
+<td>com.testing.Cliniops.Cliniops_AutomationScriptsTest@6d4b1c02</td></tr>
 </table><p>
 </body>
 </html>
