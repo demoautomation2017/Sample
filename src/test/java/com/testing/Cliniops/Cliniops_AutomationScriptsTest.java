@@ -29,7 +29,7 @@ WebDriver dr;
 	
     @BeforeMethod
 	@Parameters({"browser"})
-	public void Selectbrowser(String browser){
+	public void selectBrowser(String browser){
 		if(browser.equalsIgnoreCase("firefox")){
 			dr=new FirefoxDriver();	
 			dr.manage().window().maximize();

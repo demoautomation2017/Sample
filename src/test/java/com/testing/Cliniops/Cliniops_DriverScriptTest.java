@@ -35,7 +35,7 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 				if(recData[i][3].equalsIgnoreCase("Y"))
 				{
 					Cliniops_ReusableMethodsTest.startReport(tc, ReportsPath,"FIREFOX");
-					CAS.Selectbrowser("firefox");
+					CAS.selectBrowser("firefox");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
 
@@ -46,7 +46,7 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 				if(recData[i][4].equalsIgnoreCase("Y"))
 				{
 					Cliniops_ReusableMethodsTest.startReport(tc, ReportsPath,"CHROME");
-					CAS.Selectbrowser("chrome");
+					CAS.selectBrowser("chrome");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
 					Cliniops_ReusableMethodsTest.bw.close();
@@ -55,7 +55,7 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 				if(recData[i][5].equalsIgnoreCase("Y"))
 				{
 					Cliniops_ReusableMethodsTest.startReport(tc, ReportsPath,"IE");
-					CAS.Selectbrowser("IE");
+					CAS.selectBrowser("IE");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
 					Cliniops_ReusableMethodsTest.bw.close();
