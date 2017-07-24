@@ -38,7 +38,6 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 					CAS.selectBrowser("firefox");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
-
 					//closing bufferwriter
 					Cliniops_ReusableMethodsTest.bw.close();
 				}
