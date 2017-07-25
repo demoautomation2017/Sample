@@ -18,8 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Cliniops_ReusableMethodsTest { 
-
+public class Cliniops_ReusableMethodsTest {   
+  
 	static WebDriver driver ;
 	static String htmlname;
 	static Date cur_dt = null;
