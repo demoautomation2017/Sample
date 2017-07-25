@@ -53,7 +53,7 @@ WebDriver dr;
 	
 		 @Test
 		 	public void auto_clini_login_001() throws Exception{
-			 
+			 		//Test line
 			 		String expectedTooltipText;
 			 		String actualTooltipText;
 			 		Actions tooltip;
