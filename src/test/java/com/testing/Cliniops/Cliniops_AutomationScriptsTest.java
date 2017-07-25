@@ -1,6 +1,7 @@
 package com.testing.Cliniops;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -50,7 +51,7 @@ WebDriver dr;
 		
 	}
 	
-		 @Test(enabled=false)
+		 @Test
 		 	public void auto_clini_login_001() throws Exception{
 			 
 			 		String expectedTooltipText;
@@ -109,7 +110,7 @@ WebDriver dr;
 			 		
 
 		 	}
-		 @Test
+		 @Test(enabled=false)
 		 public void auto_clini_login_002() throws IOException{
 			 
 			 String expected = "Abhishek";
@@ -120,6 +121,32 @@ WebDriver dr;
 			 validateMsg_Attribute(userNameObj, expected, "usernameObject", "value");
 			
 		 }
+		 @Test
+		 public void auto_clini_login_005() throws Exception{
+				dr.get("https://bridgetherapeutics.cliniops.com");
+				WebElement selectLang=dr.findElement(By.id("lang_type"));
+				
+				if(selectLang.isEnabled()){
+					Select slct=new Select(selectLang);
+					List<WebElement> langOptions=slct.getOptions();
+					if(langOptions.size()==1){
+						String actualText=langOptions.get(0).getText();
+						if(actualText.equalsIgnoreCase("--Select Language--")){
+							Update_Report("Pass", "Language Dropdown", "Lang dropdown has only one option:--Select Language--");
+						}
+						else{
+							Update_Report("Fail", "Language Dropdown", "Select Language dropdown has option "+actualText);
+						}
+					}
+					else{
+						Update_Report("Fail", "Language Dropdown", "Language dropdown has more than one option initially");
+					}
+				}
+				else{
+					Update_Report("Fail", "Langage Dropdown", "Select Langauge dropdown is disabled");
+				}
+			}
+
 		 
 		@AfterMethod
 		

@@ -15,8 +15,12 @@ public class Cliniops_DriverScriptTest {//extends Cliniops_AutomationScriptsTest
 
 		Cliniops_AutomationScriptsTest CAS = new Cliniops_AutomationScriptsTest();
 
-		String testDataPath = "C:/Users/Sreeram/git/Testing_Cliniops/cliniops_AutomationScripts_Execution.xls";
-		String ReportsPath="C:/Users/Sreeram/git/Testing_Cliniops/test-output/Suite/CliniOps_Report";
+		//String testDataPath = "C:/Users/Sreeram/git/Testing_Cliniops/cliniops_AutomationScripts_Execution.xls";
+		String testDataPath = "C:/Users/Zunaira's/git/CliniopsUIAutomation/cliniops_AutomationScripts_Execution.xls";
+		
+		//String ReportsPath="C:/Users/Sreeram/git/Testing_Cliniops/test-output/Suite/CliniOps_Report";
+		String ReportsPath="C:/Users/Zunaira's/git/CliniopsUIAutomation/test-output/Suite/CliniOps_Report";
+		
 		String[][] recData = Cliniops_ReusableMethodsTest.readSheet(testDataPath, "Sheet1");
 
 		String tc = null;
