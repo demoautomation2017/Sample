@@ -18,9 +18,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Cliniops_ReusableMethodsTest { 
-
-	static WebDriver driver ;
+public class Cliniops_ReusableMethodsTest {   
+  
+	static WebDriver driver ;  
 	static String htmlname;
 	static Date cur_dt = null;
 	static BufferedWriter bw = null;
@@ -36,7 +36,7 @@ public class Cliniops_ReusableMethodsTest {
 	 * Arguments: obj --> Webelement Object, textval --> Text to be entered, objName --> name of hte object
 	 * Created by: Automation team
 	 * Creation date : July 17 2017
-	 * last modified:  2017
+	 * last modified:  July 17 2017
 	 * */
 	public static void enterText(WebElement obj, String textVal, String objName) throws IOException{
 		if(obj.isDisplayed()){
@@ -174,13 +174,24 @@ public class Cliniops_ReusableMethodsTest {
 			Update_Report("Fail","validateMsg_Attribute",objName +"is not displayed, please check your application");
 		}
 	}
+	//Name of the method:checkDisabled 
+		//Brief description:check disabled object
+		//arguments:obj->WebElement,objname->name of the object
+		//created by:Automation team
+		//creation date:07/24/2017
+		//modified date:07/24/2017
+	
+	public static void checkDisabled(WebElement obj,String objname) throws IOException{
+		if(obj.getAttribute("disabled").trim().contains("true")){Update_Report("Pass","Checkdisabled",objname+" is disabled");}
+		else{Update_Report("Fail","Checkdisabled",objname+" is not disabled");}
+	}
 
 	//Name of the method:Readingtext
 	//Brief description:Reading text box value
 	//arguments:obj->WebElement,objname->name of the object
 	//created by:Automation team
-	//creation date:12/15/2016
-	//modified date:12/15/2016
+	//creation date:07/24/2017
+	//modified date:07/24/2017
 	public static void ReadingText(WebElement obj,String objname) throws IOException{
 		if(obj.isDisplayed())
 		{
@@ -199,8 +210,8 @@ public class Cliniops_ReusableMethodsTest {
 	//Brief description:Reading check box value
 	//arguments:obj->WebElement,objname->name of the object
 	//created by:Automation team
-	//creation date:12/15/2016
-	//modified date:12/15/2016
+	//creation date:07/24/2017
+	//modified date:07/24/2017
 	public static void readingCheckbox(WebElement obj,String Expectedtext,String objname) throws IOException{
 		if(obj.isDisplayed())
 		{
@@ -216,9 +227,14 @@ public class Cliniops_ReusableMethodsTest {
 			Update_Report("Fail","readingCheckbox",objname+" is not displayed,please check your application");
 		}
 	}
-
-
-
+/*
+	 * Name of the Method: readSheet
+	 * Brief description : read excel sheet data
+	 * Arguments: datatable --> report path,sheetname:sheet name to access in the excel file
+	 * Created by: Automation team
+	 * Creation date : July 17 2017
+	 * last modified:  July 17 2017
+*/
 
 	public static String[][] readSheet(String dataTable, String sheetName) throws IOException{
 
@@ -252,6 +268,14 @@ public class Cliniops_ReusableMethodsTest {
 
 		return xlData;
 	}
+	/*
+	 * Name of the Method: startReport
+	 * Brief description : Creates HTML report template
+	 * Arguments: scriptname:test script name to run,ReportsPath:HTML report path to create,browserName:browser the script is running
+	 * Created by: Automation team
+	 * Creation date : July 17 2017
+	 * last modified:  July 17 2017
+*/
 	public static void startReport(String scriptName, String ReportsPath,String browserName) throws IOException{
 
 		String strResultPath = null;
@@ -291,6 +315,14 @@ public class Cliniops_ReusableMethodsTest {
 
 
 	}
+	/*
+	 * Name of the Method: Update_Report
+	 * Brief description : Updates HTML report with test results
+	 * Arguments: Res_type:holds the response of test script,Action:Action performed,result:contains test results
+	 * Created by: Automation team
+	 * Creation date : July 17 2017
+	 * last modified:  July 17 2017
+*/
 
 	public static void Update_Report(String Res_type,String Action, String result) throws IOException {
 		String str_time;
