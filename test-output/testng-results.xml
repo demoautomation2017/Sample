@@ -1,53 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="1" passed="0">
+<testng-results skipped="2" failed="0" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="15706" started-at="2017-07-24T23:51:55Z" finished-at="2017-07-24T23:52:11Z">
+  <suite name="Default suite" duration-ms="49" started-at="2017-07-31T19:49:51Z" finished-at="2017-07-31T19:49:51Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="15706" started-at="2017-07-24T23:51:55Z" finished-at="2017-07-24T23:52:11Z">
-      <class name="com.testing.Cliniops.Cliniops_DriverScriptTest">
-        <test-method status="FAIL" signature="cliniops_driver()[pri:0, instance:com.testing.Cliniops.Cliniops_DriverScriptTest@be2bc2]" name="cliniops_driver" duration-ms="15671" started-at="2017-07-24T16:51:55Z" finished-at="2017-07-24T16:52:11Z">
-          <exception class="org.openqa.selenium.WebDriverException">
+    <test name="Default test" duration-ms="49" started-at="2017-07-31T19:49:51Z" finished-at="2017-07-31T19:49:51Z">
+      <class name="com.testing.Cliniops.Cliniops_AutomationScriptsTest">
+        <test-method status="FAIL" signature="selectBrowser(java.lang.String)[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="selectBrowser" is-config="true" duration-ms="0" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <exception class="org.testng.TestNGException">
             <message>
-              <![CDATA[unknown error: cannot get automation extension
-from disconnected: Unable to receive message from renderer
-  (Session info: chrome=59.0.3071.115)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.15063 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 1.28 seconds
-Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
-System info: host: 'DESKTOP-SRM8OJ8', ip: '192.168.0.106', os.name: 'Windows 10', os.arch: 'x86', os.version: '10.0', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\ZUNAIR~1\AppData\Local\Temp\scoped_dir10816_11680}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=59.0.3071.115, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 37a2d371b8bb71ce2e87993f9780dab1]]>
+              <![CDATA[
+Parameter 'browser' is required by @Configuration on method selectBrowser but has not been marked @Optional or defined
+in C:\Users\Zunaira's\AppData\Local\Temp\testng-eclipse-959181937\testng-customsuite.xml]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: cannot get automation extension
-from disconnected: Unable to receive message from renderer
-  (Session info: chrome=59.0.3071.115)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.15063 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 1.28 seconds
-Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
-System info: host: 'DESKTOP-SRM8OJ8', ip: '192.168.0.106', os.name: 'Windows 10', os.arch: 'x86', os.version: '10.0', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\ZUNAIR~1\AppData\Local\Temp\scoped_dir10816_11680}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=59.0.3071.115, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 37a2d371b8bb71ce2e87993f9780dab1
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:945)
-	at com.testing.Cliniops.Cliniops_AutomationScriptsTest.selectBrowser(Cliniops_AutomationScriptsTest.java:41)
-	at com.testing.Cliniops.Cliniops_DriverScriptTest.cliniops_driver(Cliniops_DriverScriptTest.java:52)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by @Configuration on method selectBrowser but has not been marked @Optional or defined
+in C:\Users\Zunaira's\AppData\Local\Temp\testng-eclipse-959181937\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParameters(Parameters.java:154)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:361)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:84)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:197)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:585)
 	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
 	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
@@ -68,11 +43,31 @@ Session ID: 37a2d371b8bb71ce2e87993f9780dab1
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+          </exception> <!-- org.testng.TestNGException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- cliniops_driver -->
-      </class> <!-- com.testing.Cliniops.Cliniops_DriverScriptTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+        </test-method> <!-- selectBrowser -->
+        <test-method status="SKIP" signature="auto_clini_login_001()[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="auto_clini_login_001" duration-ms="10" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- auto_clini_login_001 -->
+        <test-method status="SKIP" signature="closeBrowser()[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method status="SKIP" signature="selectBrowser(java.lang.String)[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="selectBrowser" is-config="true" duration-ms="0" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectBrowser -->
+        <test-method status="SKIP" signature="auto_clini_login_005()[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="auto_clini_login_005" duration-ms="1" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- auto_clini_login_005 -->
+        <test-method status="SKIP" signature="closeBrowser()[pri:0, instance:com.testing.Cliniops.Cliniops_AutomationScriptsTest@be92ad]" name="closeBrowser" is-config="true" duration-ms="0" started-at="2017-07-31T12:49:51Z" finished-at="2017-07-31T12:49:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.testing.Cliniops.Cliniops_AutomationScriptsTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

@@ -53,9 +53,6 @@ WebDriver dr;
 	
 		 @Test
 		 	public void auto_clini_login_001() throws Exception{
-			 		//Test line
-			 		String expectedTooltipText;
-			 		String actualTooltipText;
 			 		Actions tooltip;
 			 		dr.get("https://bridgetherapeutics.cliniops.com");
 			 		tooltip = new Actions(dr);
@@ -63,36 +60,28 @@ WebDriver dr;
 			 		WebElement usrname=dr.findElement(By.id("username"));
 			 		Thread.sleep(3000);			 		
 			 		tooltip.moveToElement(usrname).build().perform();			 		
-			 		expectedTooltipText="Enter Username";
-			 		validateMsg_Attribute(usrname, expectedTooltipText, "username tooltip", "title");
+			 		validateMsg_Attribute(usrname, "Enter Username", "username tooltip", "title");
 			 		
 			 		WebElement password=dr.findElement(By.id("password"));
 			 		Thread.sleep(3000);
 			 		tooltip.moveToElement(password).build().perform();
 			 		Thread.sleep(3000);			 		
-			 		expectedTooltipText="Enter Password";
-			 		validateMsg_Attribute(password, expectedTooltipText, "password tooltip", "title");
+			 		validateMsg_Attribute(password, "Enter Password", "password tooltip", "title");
 			 
 			 		WebElement authenticate=dr.findElement(By.id("Authenticate"));
 			 		Thread.sleep(3000);
 			 		tooltip.moveToElement(authenticate).build().perform();
 			 		Thread.sleep(3000);			 		
-			 		expectedTooltipText="Authenticate";
-			 		validateMsg_Attribute(authenticate, expectedTooltipText, "Authenticate tooltip", "title");
+			 		
+			 		validateMsg_Attribute(authenticate, "Authenticate", "Authenticate tooltip", "title");
 
 			 		
-			 		usrname.sendKeys("Abhishek");
-					password.sendKeys("Welcome123#");
-					authenticate.click();
-					
-					Thread.sleep(2000);		
+			 		Thread.sleep(2000);		
 					WebElement selectStudy=dr.findElement(By.id("investigator_study"));
 					Thread.sleep(2000);		
 					tooltip.moveToElement(selectStudy).build().perform();
 					Thread.sleep(2000);
-					//actualTooltipText=selectStudy.getAttribute("title");
-					expectedTooltipText="Select Study";
-					validateMsg_Attribute(selectStudy, expectedTooltipText, "select Study tooltip", "title");
+					validateMsg_Attribute(selectStudy, "Select Study", "select Study tooltip", "title");
 					//TooltipValidation(selectStudy, expectedTooltipText, actualTooltipText);
 			 		
 			 		WebElement selectLang=dr.findElement(By.id("lang_type"));
@@ -100,63 +89,36 @@ WebDriver dr;
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(authenticate).build().perform();
 			 		Thread.sleep(3000); 				 		
-			 		expectedTooltipText="Select Language";
-			 		validateMsg_Attribute(selectLang, expectedTooltipText, "select Lang tooltip", "title");
+			 		validateMsg_Attribute(selectLang, "Select Language", "select Lang tooltip", "title");
 			 
 			 		WebElement loginBtn=dr.findElement(By.xpath(".//*[@id='login']/div[7]/input"));
 			 		Thread.sleep(5000);
 			 		tooltip = new Actions(dr);
 			 		tooltip.moveToElement(loginBtn).build().perform();
 			 		Thread.sleep(3000);			 		
-			 		expectedTooltipText="Login";
-			 		validateMsg_Attribute(loginBtn, expectedTooltipText, "login tooltip", "title");
+			 		validateMsg_Attribute(loginBtn, "Login", "login tooltip ", "title");
 			 		
 
 		 	}
 		 @Test(enabled=false)
 		 public void auto_clini_login_002() throws IOException{
 			 
-			 String expected = "Abhishek";
-			 dr.get("https://bridgetherapeutics.cliniops.com");
-			 WebElement userNameObj = dr.findElement(By.xpath(".//*[@id='username']"));
-			 enterText(userNameObj, "Abhishek", "userName object");
-			 String actual = userNameObj.getAttribute("value");
-			 validateMsg_Attribute(userNameObj, expected, "usernameObject", "value");
-			
 		 }
 		 @Test
 
 		 public void auto_clini_login_005() throws Exception{
-				dr.get("https://bridgetherapeutics.cliniops.com");
-				WebElement selectLang=dr.findElement(By.id("lang_type"));
-				
-				if(selectLang.isEnabled()){
-					Select slct=new Select(selectLang);
-					List<WebElement> langOptions=slct.getOptions();
-					if(langOptions.size()==1){
-						String actualText=langOptions.get(0).getText();
-						if(actualText.equalsIgnoreCase("--Select Language--")){
-							Update_Report("Pass", "Language Dropdown", "Lang dropdown has only one option:--Select Language--");
-						}
-						else{
-							Update_Report("Fail", "Language Dropdown", "Select Language dropdown has option "+actualText);
-						}
-					}
-					else{
-						Update_Report("Fail", "Language Dropdown", "Language dropdown has more than one option initially");
-					}
-				}
-				else{
-					Update_Report("Fail", "Langage Dropdown", "Select Langauge dropdown is disabled");
-				}
-			}
+			 dr.get("https://bridgetherapeutics.cliniops.com");
+			 WebElement rightFooter=dr.findElement(By.id("footer-right"));
+			 validate(rightFooter, "Version : 2.0.27", "Right Footer:Version 2.0.27 ","Right Footer");
+			 WebElement logo=dr.findElement(By.xpath(".//*[@id='logo']/h1/a/img"));
+			 if(logo.isDisplayed()){
+				 Update_Report("Pass", "Presence of Logo", "Logo appears");
+			 }
+			 else{
+				 Update_Report("Pass", "Presence of Logo", "Logo not displayed");
+			 }
+		 }
 
-
-			public void auto_clini_login_004() throws IOException{
-				dr.get("https://bridgetherapeutics.cliniops.com/login");
-				WebElement selectstudy=dr.findElement(By.id("investigator_study"));
-				checkDisabled(selectstudy,"Select Study");			
-			}
 
 		@AfterMethod
 		

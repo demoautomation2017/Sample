@@ -17,10 +17,10 @@ public class Cliniops_DriverScriptTest {
 
 
 		//String testDataPath = "C:/Users/Sreeram/git/Testing_Cliniops/cliniops_AutomationScripts_Execution.xls";
-		String testDataPath = "C:/Users/Zunaira's/git/CliniopsUIAutomation/cliniops_AutomationScripts_Execution.xls";
+		String testDataPath = "C:/Users/Zunaira's/git_Cliniops/CliniopsUIAutomation/cliniops_AutomationScripts_Execution.xls";
 		
 		//String ReportsPath="C:/Users/Sreeram/git/Testing_Cliniops/test-output/Suite/CliniOps_Report";
-		String ReportsPath="C:/Users/Zunaira's/git/CliniopsUIAutomation/test-output/Suite/CliniOps_Report";
+		String ReportsPath="C:/Users/Zunaira's/git_Cliniops/CliniopsUIAutomation/test-output/Suite/CliniOps_Report";
 		
 
 		String[][] recData = Cliniops_ReusableMethodsTest.readSheet(testDataPath, "Sheet1");
