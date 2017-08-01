@@ -115,7 +115,7 @@ WebDriver dr;
 				 Update_Report("Pass", "Presence of Logo", "Logo appears");
 			 }
 			 else{
-				 Update_Report("Pass", "Presence of Logo", "Logo not displayed");
+				 Update_Report("Fail", "Presence of Logo", "Logo not displayed");
 			 }
 		 }
 
