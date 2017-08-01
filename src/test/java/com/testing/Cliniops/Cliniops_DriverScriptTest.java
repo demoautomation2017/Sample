@@ -45,7 +45,7 @@ public class Cliniops_DriverScriptTest {
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
 					//closing bufferwriter
-					Cliniops_ReusableMethodsTest.bw.close();
+					//Cliniops_ReusableMethodsTest.bw.close();
 				}
 
 				if(recData[i][4].equalsIgnoreCase("Y"))
@@ -54,7 +54,7 @@ public class Cliniops_DriverScriptTest {
 					CAS.selectBrowser("chrome");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
-					Cliniops_ReusableMethodsTest.bw.close();
+					//Cliniops_ReusableMethodsTest.bw.close();
 
 				}
 				if(recData[i][5].equalsIgnoreCase("Y"))
@@ -63,7 +63,7 @@ public class Cliniops_DriverScriptTest {
 					CAS.selectBrowser("IE");
 					testcase.invoke(CAS);
 					CAS.closeBrowser();
-					Cliniops_ReusableMethodsTest.bw.close();
+					//Cliniops_ReusableMethodsTest.bw.close();
 
 				}						
 				Cliniops_ReusableMethodsTest.bw.close();				
