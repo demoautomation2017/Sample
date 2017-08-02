@@ -10,8 +10,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,6 +34,7 @@ public class Cliniops_ReusableMethodsTest {
 	static int rowCount = 1;
 	private static String browserName=null;
 	private static int reportFlag=0;
+	static String str_time;
 
 
 	/* 
@@ -40,13 +45,13 @@ public class Cliniops_ReusableMethodsTest {
 	 * Creation date : July 17 2017
 	 * last modified:  July 17 2017
 	 * */
-	public static void enterText(WebElement obj, String textVal, String objName,String stepName) throws IOException{
+	public static void enterText(WebElement obj, String textVal, String objName,String stepName,WebDriver dr) throws IOException{
 		if(obj.isDisplayed()){
 			obj.sendKeys(textVal);
-			Update_Report("Pass",stepName,textVal+" is entered in "+objName);
+			Update_Report("Pass",stepName,objName+" is entered in "+objName+" field",dr);
 
 		}else{
-			Update_Report("Fail",stepName,objName+" field is not displayed,please check application");
+			Update_Report("Fail",stepName,objName+" field is not displayed,please check application",dr);
 
 		}
 
@@ -59,28 +64,28 @@ public class Cliniops_ReusableMethodsTest {
 	 * Creation date : July 17 2017
 	 * last modified:  July 17 2017
 	 * */
-	public static void dropDown(WebElement dd, int index) throws IOException{
+	public static void dropDown(WebElement dd, int index,WebDriver dr) throws IOException{
 
 		Select select = new Select(dd);
 		if(dd.isDisplayed()){
 			select.selectByIndex(index);
-			Update_Report("Pass", "DropDown", "selected dd object by using index");
+			Update_Report("Pass", "DropDown", "selected dd object by using index",dr);
 		}
 		else{
-			Update_Report("Fail", "DropDown", "Not selected dd object by using index");
+			Update_Report("Fail", "DropDown", "Not selected dd object by using index",dr);
 		}
 
 	}
 
-	public static void dropDownByValue(WebElement dd, String value) throws IOException{
+	public static void dropDownByValue(WebElement dd, String value,WebDriver dr) throws IOException{
 
 		Select select = new Select(dd);
 		if(dd.isDisplayed()){
 			select.selectByValue(value);
-			Update_Report("Pass", "DropDown", "selected dd object by using Value");
+			Update_Report("Pass", "DropDown", "selected dd object by using Value",dr);
 		}
 		else{
-			Update_Report("Fail", "DropDown", "Not selected dd object by using Value");
+			Update_Report("Fail", "DropDown", "Not selected dd object by using Value",dr);
 		}
 
 	}
@@ -93,13 +98,13 @@ public class Cliniops_ReusableMethodsTest {
 	 * last modified: July 17 2017
 	 * 
 	 * */	
-	public static void clickElement(WebElement obj, String objName,String stepName) throws IOException{
+	public static void clickElement(WebElement obj, String objName,String stepName,WebDriver dr) throws IOException{
 		if(obj.isDisplayed()){
 			obj.click();
-			Update_Report("Pass", stepName, "clicked on selected object");
+			Update_Report("Pass", stepName, "clicked on selected object",dr);
 			System.out.println("Pass: "+ objName + " is clicked.");
 		}else{
-			Update_Report("Fail", stepName, "Not clicked on selected object");
+			Update_Report("Fail", stepName, "Not clicked on selected object",dr);
 		}
 	}
 
@@ -115,16 +120,16 @@ public class Cliniops_ReusableMethodsTest {
 	 * 
 	 * */	
 
-	public static void validateText(WebElement obj, String expectedText, String objName,String stepName) throws IOException{
+	public static void validateText(WebElement obj, String expectedText, String objName,String stepName,WebDriver dr) throws IOException{
 		if(obj.isDisplayed()){
 			String actualText = obj.getText().trim();
 			if(expectedText.equals(actualText)){
-				Update_Report("Pass", stepName, "Actual text is matching with expected text");
+				Update_Report("Pass", stepName, "Actual text is matching with expected text",dr);
 			}else{
-				Update_Report("Fail", stepName, "Actual text is not matching with expected text");
+				Update_Report("Fail", stepName, "Actual text is not matching with expected text",dr);
 			}
 		}else{
-			Update_Report("Fail",stepName,objName+ " is not displayed, please check your application");
+			Update_Report("Fail",stepName,objName+ " is not displayed, please check your application",dr);
 		}
 	}
 	
@@ -139,17 +144,17 @@ public class Cliniops_ReusableMethodsTest {
 	 * 
 	 */	
 
-	public static void validateMsg_Attribute(WebElement obj, String expectedText, String objName,String attributeName) throws IOException{
+	public static void validateTextAttribute(WebElement obj, String expectedText, String objName,String attributeName,String stepName,WebDriver dr) throws IOException{
 		//if(obj.isDisplayed()){
 		if(obj.isEnabled()){	
 			String actualText = obj.getAttribute(attributeName);
 			if(expectedText.equals(actualText)){
-				Update_Report("Pass","validateMsg_Attribute","Actual message matching with expected message:"+ actualText);
+				Update_Report("Pass","validateMsg_Attribute","Actual message matching with expected message:"+ actualText,dr);
 			}else{
-				Update_Report("Fail","validateMsg_Attribute","Actual message not matching with expected message:"+actualText);
+				Update_Report("Fail","validateMsg_Attribute","Actual message not matching with expected message:"+actualText,dr);
 			}
 		}else{
-			Update_Report("Fail","validateMsg_Attribute",objName +"is not displayed, please check your application");
+			Update_Report("Fail","validateMsg_Attribute",objName +"is not displayed, please check your application",dr);
 		}
 	}
 	//Name of the method:checkDisabled 
@@ -159,27 +164,64 @@ public class Cliniops_ReusableMethodsTest {
 		//creation date:07/24/2017
 		//modified date:07/24/2017
 	
-	public static void checkDisabled(WebElement obj,String objname) throws IOException{
-		if(obj.getAttribute("disabled").trim().contains("true")){Update_Report("Pass","Checkdisabled",objname+" is disabled");}
-		else{Update_Report("Fail","Checkdisabled",objname+" is not disabled");}
+	public static void checkDisabled(WebElement obj,String objname,WebDriver dr) throws IOException{
+		if(obj.getAttribute("disabled").trim().contains("true")){
+			Update_Report("Pass","Checkdisabled",objname+" is disabled",dr);
+		}
+		else{
+			Update_Report("Fail","Checkdisabled",objname+" is not disabled",dr);
+		}
 	}
 
+	public static void Login(WebDriver dr) throws InterruptedException, IOException{
+		dr.get("https://bridgetherapeutics.cliniops.com");
+		dr.findElement(By.id("username")).sendKeys("Abhishek");
+		Thread.sleep(2000);
+		dr.findElement(By.id("password")).sendKeys("Welcome123#");
+		Thread.sleep(2000);
+		dr.findElement(By.id("Authenticate")).click();
+		Thread.sleep(2000);
+		dr.findElement(By.xpath("//*[text()='Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer']")).click();
+		Thread.sleep(3000);
+		dr.findElement(By.xpath("//*[text()='English']")).click();
+		dr.findElement(By.xpath(".//*[@id='login']/div[7]/input")).click();
+	}
+	
+	
+	public static void checkEnabled(WebElement obj,String objname,WebDriver dr) throws IOException{
+		if(obj.isEnabled()){
+			Update_Report("Pass","checkEnabled",objname+" is enabled",dr);
+		}
+		else{
+			Update_Report("Fail","checkEnabled",objname+" is not enabled",dr);
+		}
+	}
+
+	public static void checkObjectDisplay(WebElement obj,String objname,String stepName,WebDriver dr) throws IOException{
+		if(obj.isDisplayed()){
+			Update_Report("Pass", stepName, objname+" appears",dr);
+		}
+		else{
+			Update_Report("Fail", stepName, objname+" not displayed",dr);
+		}
+	}
+	
 	//Name of the method:Readingtext
 	//Brief description:Reading text box value
 	//arguments:obj->WebElement,objname->name of the object
 	//created by:Automation team
 	//creation date:07/24/2017
 	//modified date:07/24/2017
-	public static void ReadingText(WebElement obj,String objname) throws IOException{
+	public static void ReadingText(WebElement obj,String objname,WebDriver dr) throws IOException{
 		if(obj.isDisplayed())
 		{
 			String Actualtext=obj.getText().trim();
 			if(Actualtext.isEmpty())
 			{
-				Update_Report("Fail","ReadingText",objname+" has No data");
+				Update_Report("Fail","ReadingText",objname+" has No data",dr);
 			}
 			else{
-				Update_Report("Pass","ReadingText",objname+" contains "+Actualtext);
+				Update_Report("Pass","ReadingText",objname+" contains "+Actualtext,dr);
 			}
 		}
 	}	
@@ -190,19 +232,19 @@ public class Cliniops_ReusableMethodsTest {
 	//created by:Automation team
 	//creation date:07/24/2017
 	//modified date:07/24/2017
-	public static void readingCheckbox(WebElement obj,String Expectedtext,String objname) throws IOException{
+	public static void readingCheckbox(WebElement obj,String Expectedtext,String objname,WebDriver dr) throws IOException{
 		if(obj.isDisplayed())
 		{
 			String Actualtext=obj.getAttribute("checked").trim();
 			if(Expectedtext.equals(Actualtext)){
-				Update_Report("Pass","readingCheckbox",objname+" is checked");
+				Update_Report("Pass","readingCheckbox",objname+" is checked",dr);
 			}
 			else{
-				Update_Report("Fail","readingCheckbox",objname+" is not checked");
+				Update_Report("Fail","readingCheckbox",objname+" is not checked",dr);
 			}
 		}
 		else{
-			Update_Report("Fail","readingCheckbox",objname+" is not displayed,please check your application");
+			Update_Report("Fail","readingCheckbox",objname+" is not displayed,please check your application",dr);
 		}
 	}
 /*
@@ -308,7 +350,7 @@ public class Cliniops_ReusableMethodsTest {
 	 * last modified:  July 17 2017
 */
 
-	public static void Update_Report(String Res_type,String Action, String result) throws IOException {
+	public static void Update_Report(String Res_type,String Action, String result,WebDriver dr) throws IOException {
 		String str_time;
 		Date exec_time = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -326,6 +368,7 @@ public class Cliniops_ReusableMethodsTest {
 					+ result + "</FONT></TD></TR>");
 
 		} else if (Res_type.startsWith("Fail")) {
+			String ss1Path= screenshot(dr);
 			exeStatus = "Failed";
 			report = 1;
 			bw.write("<TR COLS=7><TD BGCOLOR=#EEEEEE WIDTH=3%><FONT FACE=VERDANA SIZE=2>"
@@ -336,7 +379,7 @@ public class Cliniops_ReusableMethodsTest {
 					+ str_time
 					+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=10%><FONT FACE=VERDANA SIZE=2 COLOR = RED>"
 					+ "<a href= "
-					+ htmlname
+					+ ss1Path
 					+ "  style=\"color: #FF0000\"> Failed </a>"
 
 					+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = RED>"
@@ -345,6 +388,25 @@ public class Cliniops_ReusableMethodsTest {
 
 		} 
 	}
+	
+	
+	public static String screenshot(WebDriver dr) throws IOException{
+		
+		Date exec_time = new Date();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		str_time = dateFormat.format(exec_time);
+		//String fileName = "C:/Users/Sreeram/Desktop/WorkDayScreenShots/ss.png";
+		///com.testing.Cliniops/test-output/Suite/
+		String  ss1Path = ".\\test-output\\Suite\\Screenshots"+ str_time+".png";
+		File scrFile = ((TakesScreenshot)dr).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File(ss1Path));
+		return ss1Path;
+	}
+
+
+
+	
+	
 	public static void closeReport() throws IOException{
 		rowCount = 1;
 		browserName = null;
