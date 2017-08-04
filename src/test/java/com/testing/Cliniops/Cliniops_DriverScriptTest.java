@@ -8,14 +8,12 @@ import org.apache.tools.ant.taskdefs.UpToDate;
 import org.testng.annotations.Test;
 
 public class Cliniops_DriverScriptTest {  
-  
-	
+
+
 	@Test
 	public static void cliniopsDriver() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException, ClassNotFoundException, InstantiationException{
 
 		Cliniops_AutomationScriptsTest casObject = new Cliniops_AutomationScriptsTest();
-		//String testDataPath = "C:/Users/Zunaira's/git_Cliniops/CliniopsUIAutomation/cliniops_AutomationScripts_Execution.xls";
-		//String reportsPath="C:/Users/Zunaira's/git_Cliniops/CliniopsUIAutomation/test-output/Suite/CliniOps_Report";
 		String testDataPath =".\\cliniops_AutomationScripts_Execution.xls";
 		String reportsPath=".\\test-output\\suite\\";
 		String testDataSheet="Sheet1";
