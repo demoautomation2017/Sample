@@ -91,67 +91,54 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 
     }
 
-
+    
     @Test
     public void auto_Clini_Login_002() throws IOException, InterruptedException{
     	dr.get("https://bridgetherapeutics.cliniops.com/login");
-
     	WebElement username=dr.findElement(By.id("username"));
-    	enterText(username, "Abhishek", "Username","Enter Username",dr);
-
+    	enterText(username, "Abhishek", "Username", "Enter username", dr);
     	WebElement password=dr.findElement(By.id("password"));
-    	enterText(password, "Welcome123#", "Password","Enter Password",dr);
-
+    	enterText(password, "Welcome123#", "Password", "Enter password", dr);
     	WebElement authenticate=dr.findElement(By.id("Authenticate"));
-    	clickElement(authenticate, "Authenticate Button","Click Authenticate button",dr);
-    	Thread.sleep(7000);
-
-    	//it will verify the dropdown's are enabled
+    	clickElement(authenticate, "Authenticate Button", "Click on authenticate", dr);
     	WebElement selectStudy= dr.findElement(By.id("investigator_study"));
-    	boolean selStudy=selectStudy.isEnabled();
-    	Assert.assertEquals(selStudy,true,"Study is enabled");
-
+    	checkEnabled(selectStudy,"selectStudy",dr);
     	WebElement selectLang= dr.findElement(By.id("lang_type"));
-    	boolean lang=selectLang.isEnabled();
-    	Assert.assertEquals(lang, true,"Lang is enabled");	 
-
+    	checkEnabled(selectLang,"selectLang",dr);
     	WebElement login=dr.findElement(By.xpath("//*[@title='Login']"));
-    	boolean loginBtn=login.isEnabled();
-    	Assert.assertEquals(loginBtn, true,"Login is enabled");
-
+    	checkEnabled(login,"login",dr);  
     	Thread.sleep(2000);
-    	selectStudy.click();
-    	Actions ac= new Actions(dr);
-    	WebElement study= dr.findElement(By.xpath("//*[contains(text(),'Cisplatin/Etoposide/Rad')]"));
-    	ac.moveToElement(selectStudy).build().perform();
-    	String expectedTextForStudy="Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer";
-    	validateText(study, expectedTextForStudy, "Study Details","Study name",dr);
-    	dropDownByValue(selectStudy,"5",dr);
-    	Thread.sleep(2000);
-    	Thread.sleep(7000);
-    	selectLang.click();
-    	WebElement lang1= dr.findElement(By.xpath("//*[contains(text(),'English')]"));
-    	ac.moveToElement(lang1).build().perform();
-    	String expectedLanguage="English";
-    	validateText(lang1, expectedLanguage, "Language", "Language option",dr);
+    	clickElement(selectStudy, "selectStudy","selectStudy",dr);
+    	WebElement selectStudyOption=dr.findElement(By.xpath("//*[text()='Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer']"));
+    	checkObjectDisplay(selectStudyOption,"selectStudyOption","selectStudyOption",dr);
+    	//String expectedTextForStudy="Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer123";
+    	//validateText(selectStudyOption, expectedTextForStudy, "Study option", "Study option", dr);
+    	clickElement(selectStudyOption, "selectStudyOption","selectStudyOption",dr);
     	Thread.sleep(3000);
 
+    	clickElement(selectLang, "selectLang","selectLang",dr);
+    	WebElement selectLanguageOption=dr.findElement(By.xpath(".//*[@id='lang_type']/option[2]"));
+    	checkObjectDisplay(selectLanguageOption,"selectLanguageOption","selectLanguageOption",dr);
+    	//String expectedLanguage="English";
+    	//validateText(selectLanguageOption, expectedLanguage, "Language option", "Language option", dr);
+    	clickElement(selectLanguageOption, "selectLanguageOption","selectLanguageOption",dr);
 
-    	dropDownByValue(selectLang, "1",dr);
     	Thread.sleep(2000);
-
-    	clickElement(login, "Login","Click Login button",dr);
-
+    	clickElement(login, "login","login",dr);
     	String ActualURL= dr.getCurrentUrl();
     	String ExpectedURL="https://bridgetherapeutics.cliniops.com/investigator";
-
-    	Assert.assertEquals(ActualURL, ExpectedURL);
+    	validateURL(ExpectedURL,ActualURL,"homePageURL",dr);
+    	if(ExpectedURL.equals(ActualURL)){
+    		updateReport("Pass", "HomeURL", "Actual text is matching with expected text",dr);
+    	}
+    	else{
+    		updateReport("Fail", "HomeURL", "Actual text is not matching with expected text",dr);
+    	}
     	WebElement homePage=dr.findElement(By.className("current"));
-    	validateText(homePage, "Home", "HomePage","HomePage Display",dr);
-
-
-    }	
-
+    	String expectedHome="Home";
+    	validateText(homePage,expectedHome, "HomePage", "HomePage Highlighted", dr);
+    	  
+    }
 
     @Test
     public void auto_Clini_Login_003() throws IOException, InterruptedException{
@@ -298,7 +285,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 
     @Test
     public void auto_Clini_Home_001() throws InterruptedException, IOException{
-    	Login(dr);
+    	login(dr);
     	Thread.sleep(2000);
     	WebElement homeStudyLogo=dr.findElement(By.xpath(".//*[@id='logo']/h1/a/img"));
     	checkObjectDisplay(homeStudyLogo,"home Study  Logo","HomePage Study Logo",dr);

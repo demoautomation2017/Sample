@@ -243,8 +243,18 @@ public class Cliniops_ReusableMethodsTest {
 		}
 
 	}
- 
-   
+
+    public static void validateURL(String expectedURL,String ActualURL,String stepName,WebDriver dr) throws IOException{
+    	if(expectedURL.trim().equals(ActualURL.trim())){
+    		updateReport("Pass","stepName","Actual URL matching with expected URL",dr);
+    	}
+    	else{
+    		updateReport("Fail","stepName","Actual URL matching with expected URL",dr);
+    	}
+
+    }
+
+    
     /**
      * Read data from excel sheet
      * @param filePath
@@ -407,6 +417,7 @@ public class Cliniops_ReusableMethodsTest {
 		FileUtils.copyFile(scrFile, destFile);
 		String absPath=destFile.getAbsolutePath();
 		return absPath;
+    	
 	}	
 	
     
@@ -422,7 +433,7 @@ public class Cliniops_ReusableMethodsTest {
 		bw.close();
 	}
     
-    public static void Login(WebDriver dr) throws InterruptedException, IOException{
+    public static void login(WebDriver dr) throws InterruptedException, IOException{
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		dr.findElement(By.id("username")).sendKeys("Abhishek");
 		Thread.sleep(2000);
