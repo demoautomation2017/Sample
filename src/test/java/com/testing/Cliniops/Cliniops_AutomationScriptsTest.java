@@ -1,6 +1,8 @@
 package com.testing.Cliniops;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -114,6 +116,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     	//String expectedTextForStudy="Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer123";
     	//validateText(selectStudyOption, expectedTextForStudy, "Study option", "Study option", dr);
     	clickElement(selectStudyOption, "selectStudyOption","selectStudyOption",dr);
+    	
     	Thread.sleep(3000);
 
     	clickElement(selectLang, "selectLang","selectLang",dr);
@@ -322,8 +325,88 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     	String expectedVisitsCount="5";
     	validateText(visitsCount, expectedVisitsCount, "Visits count","Visits",dr);
     }
+    
+    
+  
+    @Test
+    public void auto_Clini_Home_002() throws InterruptedException, IOException, InvocationTargetException{
+    	//Login to the application
+    	login(dr);
+  		Thread.sleep(2000);
 
+  		//Create action object
+  		Actions action = new Actions(dr);
 
+  		//Locate the 4 graphs
+  		List<WebElement> graphs = dr.findElements(By.cssSelector("div.graph-container>div[class*='graph']"));
+  		ArrayList<String> contId = new ArrayList<String>();
+
+  		//Locate the 4 containers to get their ids
+  		List<WebElement> containers = dr.findElements(By.cssSelector("div[id*='container']"));
+  		for(int i=0; i< containers.size(); i++){
+  			WebElement container = containers.get(i);
+  			String id = container.getAttribute("id");
+  			contId.add(id);
+  		}
+
+  		//Graph titles
+  		String[] expectedGraphText = {
+  			"Subjects Enrollment", 
+  			"Visits",
+  			"Site Enrollment", 
+  			"Group Enrollment"
+  		};
+  		//Expected result for chart menu options
+  		String[] expMenuOption = {
+  			"Print chart",
+  			"Download PNG image",
+  			"Download JPEG image",
+  			"Download PDF document",
+  			"Download SVG vector image"
+  		};
+
+  		String locator = "div[id=";
+  		//Navigate through the list elements 
+  		for(int i=0; i< graphs.size(); i++){
+  			//Get the chart object
+  			WebElement chartObj = graphs.get(i);
+  			//Scroll if required
+  			action.moveToElement(chartObj).build().perform();
+
+  			//Get Chart title and validate if it is as per expected??
+  			String title = chartObj.getText().split("\n")[0];
+  			validateText(title, expectedGraphText[i], "Graph","Verify Graph Title",dr);
+  			System.out.println("Graph title = " + title);
+  			
+  			//Get the context menu rectangle "≡" and click on the button so pop up options are enabled
+  			String menuLocator = locator + contId.get(i) + "]>div>svg>g.highcharts-button>rect";
+  			WebElement chartMenu = dr.findElement(By.cssSelector(menuLocator));
+  			Thread.sleep(1000);
+  			action.moveToElement(chartMenu).build().perform();
+  			Thread.sleep(3000);
+  			//action.click().build().perform();
+  			action.moveToElement(chartMenu).click().build().perform();
+  			Thread.sleep(3000);
+  				
+  			String popUpLocator = locator + contId.get(i) + "]>div>div.highcharts-contextmenu>div>div";
+
+  			List<WebElement> popUpOptions = dr.findElements(By.cssSelector(popUpLocator));
+
+  			System.out.println("No. of Pop Up Window Options = " + popUpOptions.size()) ;
+  			//Find the pop up window and navigate to validate the 5 options
+  			for(int j=0; j< popUpOptions.size(); j++){
+  				WebElement opt = popUpOptions.get(j);
+  				Thread.sleep(1000);
+  				action.moveToElement(opt);
+  				String optText = opt.getText();
+  				System.out.println("Option text == " + optText);
+  				String stepName = "Verify Download Link";
+  				validateText(optText, expMenuOption[j], "Chart Context Menu",stepName,dr);
+  			}
+  		}
+  	}
+
+ 
     @AfterMethod
 
     public void closeBrowser(){
