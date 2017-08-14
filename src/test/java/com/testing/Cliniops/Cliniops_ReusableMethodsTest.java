@@ -274,6 +274,16 @@ public class Cliniops_ReusableMethodsTest {
 	}
 
 	
+	public static void checkContentsMatch(String expectedText,String actualText,String stepName,WebDriver dr) throws IOException
+	{
+	if(expectedText.trim().equals(actualText.trim())){
+		updateReport("Pass", stepName, "Text highlighted",dr);
+	}else{
+		updateReport("Fail", stepName, "Text not highlighted",dr);
+	}
+		
+	}
+	
     
     /**
      * Read data from excel sheet

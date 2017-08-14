@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -25,6 +26,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.thoughtworks.selenium.webdriven.commands.GetAllWindowNames;
 
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
     WebDriver dr;  
@@ -407,6 +410,135 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
   	}
 
  
+    
+    @Test
+	public void auto_Clini_Confg_001() throws InterruptedException, IOException{
+		final String SCRIPT_GET_ELEMENT_BORDER = null;
+		login(dr);
+		Thread.sleep(2000);
+		WebElement config=dr.findElement(By.xpath(".//*[text()='Configure']"));
+	    Actions action=new Actions(dr);
+	    action.moveToElement(config).build().perform();
+		String expectedTextColor="rgba(255, 255, 255, 1)";
+		String ActualTextColor = dr.findElement(By.xpath(".//*[text()='Configure']")).getCssValue("color");
+		checkContentsMatch(expectedTextColor,ActualTextColor,"Configure tab highlight",dr);
+		clickElement(config, "Configure tab", "Configure tab",dr);
+		String ExpectedURL="https://bridgetherapeutics.cliniops.com/investigator/configurestudy/general";
+		String ActualURL=dr.getCurrentUrl();
+		validateURL(ExpectedURL,ActualURL,"Configure URL Check",dr);
+		
+	}
+
+    
+    @Test
+    public void auto_Clini_Confg_007() throws InterruptedException,IOException{
+    	login(dr);
+    	Thread.sleep(3000);
+    	WebElement config=dr.findElement(By.xpath(".//*[@id='nav']/ul/li[2]/a"));
+    	config.click();
+    	Thread.sleep(3000);
+    	WebElement e2bSettings=dr.findElement(By.xpath(".//*[@id='study_general_settings']/div[2]/div[1]/fieldset[3]/a"));
+    	e2bSettings.click();
+    	WebElement serverSettings=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[1]/span"));
+    	if(serverSettings.getText().trim().equalsIgnoreCase("Server Settings:*")){
+    		WebElement serverSettingsTextbox=dr.findElement(By.id("targetenrollment"));
+    		checkObjectDisplay(serverSettingsTextbox, "Server Settings TextBox", "Server Settings TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Server Settings Textbox", "Server Settings textbox not displayed", dr);
+    	}
+    	WebElement username=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[2]/span"));
+    	if(username.getText().trim().equalsIgnoreCase("User Name:*")){
+    		WebElement usernameTextbox=dr.findElement(By.id("safetyuser"));
+    		checkObjectDisplay(usernameTextbox, "Username TextBox", "Username TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Username Textbox", "Username textbox not displayed", dr);
+    	}
+    	WebElement password=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[3]/span"));
+    	if(password.getText().trim().equalsIgnoreCase("Password:*")){
+    		WebElement passwordTextbox=dr.findElement(By.id("safetypass"));
+    		checkObjectDisplay(passwordTextbox, "Password TextBox", "Password TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Password Textbox", "Password textbox not displayed", dr);
+    	}
+    	WebElement sshKey=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[4]/span"));
+    	if(sshKey.getText().trim().equalsIgnoreCase("SSH Key:*")){
+    		WebElement sshKeyTextbox=dr.findElement(By.id("sshkey"));
+    		checkObjectDisplay(sshKeyTextbox, "SSH Key TextBox", "SSH Key TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "SSH Key Textbox", "SSH Key textbox not displayed", dr);
+    	}
+    	
+    	
+    	WebElement submitBtn=dr.findElement(By.name("odmsubmit"));
+    	checkObjectDisplay(submitBtn, "Submit Button", "Submit Button", dr);
+    	WebElement closeBtn=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[5]/div/input[2]"));
+	    checkObjectDisplay(closeBtn, "Close Button", "Close Button", dr);
+	    
+	    
+    }
+    
+    @Test
+    public void auto_Clini_Confg_008() throws InterruptedException,IOException{
+    	login(dr);
+    	Thread.sleep(3000);
+    	WebElement config=dr.findElement(By.xpath(".//*[@id='nav']/ul/li[2]/a"));
+    	config.click();
+    	Thread.sleep(3000);
+    	WebElement clinicalDbSettings=dr.findElement(By.xpath(".//*[@id='study_general_settings']/div[2]/div[1]/fieldset[4]/a"));
+    	clinicalDbSettings.click();
+    	WebElement serverSettings=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[1]/span"));
+    	
+    	//String serSetText=serverSettings.getText();
+    	//System.out.println(serSetText);
+    	//validateText(serverSettings, expectedText, objName, stepName, dr);
+    	//validateText(serverSettings, "Server Settings:*", Server Settings Label, stepName, dr);
+    	if(serverSettings.getText().trim().equalsIgnoreCase("Server Settings:*")){
+    		WebElement serverSettingsTextbox=dr.findElement(By.id("targetenrollment"));
+    		checkObjectDisplay(serverSettingsTextbox, "Server Settings TextBox", "Server Settings TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Server Settings Textbox", "Server Settings textbox not displayed", dr);
+    	}
+    	WebElement username=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[2]/span"));
+    	if(username.getText().trim().equalsIgnoreCase("User Name:*")){
+    		WebElement usernameTextbox=dr.findElement(By.id("safetyuser"));
+    		checkObjectDisplay(usernameTextbox, "Username TextBox", "Username TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Username Textbox", "Username textbox not displayed", dr);
+    	}
+    	WebElement password=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[3]/span"));
+    	if(password.getText().trim().equalsIgnoreCase("Password:*")){
+    		WebElement passwordTextbox=dr.findElement(By.id("safetypass"));
+    		checkObjectDisplay(passwordTextbox, "Password TextBox", "Password TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "Password Textbox", "Password textbox not displayed", dr);
+    	}
+    	WebElement sshKey=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[4]/span"));
+    	if(sshKey.getText().trim().equalsIgnoreCase("SSH Key:*")){
+    		WebElement sshKeyTextbox=dr.findElement(By.id("sshkey"));
+    		checkObjectDisplay(sshKeyTextbox, "SSH Key TextBox", "SSH Key TextBox", dr);
+    	}
+    	else{
+    		updateReport("Fail", "SSH Key Textbox", "SSH Key textbox not displayed", dr);
+    	}
+    	
+    	WebElement submitBtn=dr.findElement(By.id("odmsubmit"));
+    	//WebElement submitBtn=dr.findElement(By.name("odmsubmit"));
+    	checkObjectDisplay(submitBtn, "Submit Button", "Submit Button", dr);
+    	
+    	WebElement closeBtn=dr.findElement(By.xpath(".//*[@id='safetySettings']/div/fieldset[5]/div/input[2]"));
+	    checkObjectDisplay(closeBtn, "Close Button", "Close Button", dr);
+	    
+	    
+    }
+    
+    
     @AfterMethod
 
     public void closeBrowser(){
