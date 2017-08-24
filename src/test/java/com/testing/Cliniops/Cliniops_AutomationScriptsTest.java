@@ -720,9 +720,6 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     }
 
 
-
-
-
     @Test
     public void auto_Clini_Confg_007() throws InterruptedException,IOException{
     	login(dr);
@@ -774,6 +771,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     	checkObjectDisplay(closeBtn, "Close Button", "Close Button",dr);
 
     }
+
 
     @Test
     public void auto_Clini_Confg_008() throws InterruptedException,IOException{
@@ -829,7 +827,127 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     	checkObjectDisplay(closeBtn, "Close Button", "Close Button", dr);
     }
 
+    
+    @Test
+    public void auto_Clini_Manage_003() throws InterruptedException,IOException{
+    	Actions tooltip = new Actions(dr);
+    	login(dr);
+    	Thread.sleep(3000);
+    	dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+    	
+    	WebElement addRoles=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/h3/span/a"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(addRoles).build().perform();
+    	validateTextAttribute(addRoles, "Add Roles", "Add Roles tooltip", "title", "Add roles tooltip", dr);
+    	
+    	WebElement projectManagerViewRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[2]/td[2]/div/a"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(projectManagerViewRecord).build().perform();
+    	validateTextAttribute(projectManagerViewRecord, "View Record", "View Record tooltip", "title", "Project manager View record tooltip", dr);
+    	
+    	WebElement studyAdminViewRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[2]/div/a"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(studyAdminViewRecord).build().perform();
+    	validateTextAttribute(studyAdminViewRecord, "View Record", "View Record tooltip", "title", "Study Administrator View record tooltip", dr);
+    	
+    	WebElement dataMgrEditRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[2]/div/a[1]"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(dataMgrEditRecord).build().perform();
+    	validateTextAttribute(dataMgrEditRecord, "Edit Record", "Edit Record tooltip", "title", "Data Manager Edit record tooltip", dr);
+    	
+    	WebElement siteCoordEditRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[2]/div/a[1]"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(siteCoordEditRecord).build().perform();
+    	validateTextAttribute(siteCoordEditRecord, "Edit Record", "Edit Record tooltip", "title", "Site Coordinator Edit record tooltip", dr);
+    	
+    	WebElement dataMgrDeleteRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[2]/div/a[2]"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(dataMgrDeleteRecord).build().perform();
+    	validateTextAttribute(dataMgrDeleteRecord, "Delete Record", "Delete Record tooltip", "title", "Data Manager Delete record tooltip", dr);
+    	
+    	WebElement siteCoordDeleteRecord=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[2]/div/a[2]"));
+    	Thread.sleep(3000);
+    	tooltip.moveToElement(siteCoordDeleteRecord).build().perform();
+    	validateTextAttribute(siteCoordDeleteRecord, "Delete Record", "Delete Record tooltip", "title", "Site Coordinator Delete record tooltip", dr);
+    	
+    	
+    	
+    	    	
+    }
 
+    @Test
+    public void auto_Clini_Manage_006() throws InterruptedException,IOException{
+    	login(dr);
+    	Thread.sleep(3000);
+    	dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+    	WebElement Users=dr.findElement(By.xpath(".//*[text()='Users']"));
+    	clickElement(Users,"Users Tab", "Users Tab", dr);
+    	Thread.sleep(2000);
+    	String actualText=dr.findElement(By.xpath(".//*[@id='content-body']/div[1]/div/h3")).getText().substring(0, 19);
+    	String expectedText="User Administration";
+    	checkContentsMatch(actualText,expectedText,"User Adminisration Window","User Administration Window",dr); 
+    }
+
+    @Test
+    public void auto_Clini_Manage_007() throws InterruptedException,IOException{
+    	login(dr);
+    	Actions mouseover=new Actions(dr);
+    	Thread.sleep(3000);
+    	dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+    	dr.findElement(By.xpath(".//*[text()='Users']")).click();
+    	String expectedTextColor1="rgba(255, 255, 255, 1)";
+    	String actualTextColor1 = dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).getCssValue("color");
+    	checkHighlightText(expectedTextColor1,actualTextColor1,"Manage tab Highlight",dr);
+    	String expectedTextColor2="rgba(255, 255, 255, 1)";
+    	String actualTextColor2= dr.findElement(By.xpath(".//*[text()='Users']")).getCssValue("color");
+    	checkHighlightText(expectedTextColor2,actualTextColor2,"Users bar Highlight",dr);
+
+    	WebElement addUser=dr.findElement(By.xpath(".//*[@id='content-body']/div[1]/div/h3/span/a"));
+    	mouseover.moveToElement(addUser).build().perform();
+    	checkObjectDisplay(addUser, "Add User button", "Add User button", dr); 
+    	WebElement search=dr.findElement(By.xpath(".//*[@id='user_table_filter']/label"));
+    	mouseover.moveToElement(search).build().perform();
+    	if(search.getText().equalsIgnoreCase("Search:")){checkObjectDisplay(search, "Search Option", "Search Option", dr); }
+
+    	WebElement count=dr.findElement(By.xpath(".//*[text()='Count']"));
+    	mouseover.moveToElement(count).build().perform();
+    	if(count.getText().equalsIgnoreCase("Count")){checkObjectDisplay(count, "Count Column", "Count Column", dr); }
+    	WebElement userName=dr.findElement(By.xpath(".//*[text()='Username']"));
+    	mouseover.moveToElement(userName).build().perform();
+    	if(userName.getText().equalsIgnoreCase("Username")){checkObjectDisplay(userName, "Username Column", "Username Column", dr); }
+    	WebElement emailId=dr.findElement(By.xpath(".//*[text()='E-mail ID']"));
+    	mouseover.moveToElement(emailId).build().perform();
+    	if(emailId.getText().equalsIgnoreCase("E-mail ID")){checkObjectDisplay(emailId, "E-mail ID Column", "E-mail ID Column", dr); }
+    	Thread.sleep(3000);
+    	WebElement firstName=dr.findElement(By.xpath(".//*[@id='user_table']/thead/tr/th[4]"));
+    	mouseover.moveToElement(firstName).build().perform();
+    	if(firstName.getText().equalsIgnoreCase("First Name")){checkObjectDisplay(firstName, "First Name Column", "First Name Column", dr); }
+    	WebElement lastName=dr.findElement(By.xpath(".//*[text()='Last Name']"));
+    	mouseover.moveToElement(lastName).build().perform();
+    	if(lastName.getText().equalsIgnoreCase("Last Name")){checkObjectDisplay(lastName, "Last Name Column", "Last Name Column", dr); }
+    	WebElement role=dr.findElement(By.xpath("//*[text()='Role']"));
+    	mouseover.moveToElement(role).build().perform();
+    	if(role.getText().equalsIgnoreCase("Role")){checkObjectDisplay(role, "Role Column", "Role Column", dr); }
+    	WebElement status=dr.findElement(By.xpath(".//*[text()='Status']"));
+    	mouseover.moveToElement(status).build().perform();
+    	if(status.getText().equalsIgnoreCase("Status")){checkObjectDisplay(status, "Status Column", "Status Column", dr); }
+    	WebElement sites=dr.findElement(By.xpath(".//*[text()='Sites']"));
+    	mouseover.moveToElement(sites).build().perform();
+    	if(sites.getText().equalsIgnoreCase("Sites")){checkObjectDisplay(sites, "Sites Column", "Sites Column", dr); }
+    	WebElement action=dr.findElement(By.xpath("//*[text()='Action']"));
+    	mouseover.moveToElement(action).build().perform();
+    	if(action.getText().equalsIgnoreCase("Action")){checkObjectDisplay(action, "Action Column", "Action Column", dr); }
+
+    	WebElement previous=dr.findElement(By.xpath(".//*[text()='Previous']"));
+    	mouseover.moveToElement(dr.findElement(By.xpath(".//*[text()='Previous']"))).build().perform();
+    	checkObjectDisplay(previous, "Previous Button", "Previous Button", dr);
+    	WebElement next=dr.findElement(By.xpath(".//*[text()='Next']"));
+    	mouseover.moveToElement(dr.findElement(By.xpath(".//*[text()='Next']"))).build().perform();
+    	checkObjectDisplay(next, "Next Button", "Next Button", dr);
+    	Thread.sleep(3000);
+    }
+
+    
 
 
 

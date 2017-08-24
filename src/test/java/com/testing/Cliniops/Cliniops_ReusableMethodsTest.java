@@ -33,7 +33,7 @@ public class Cliniops_ReusableMethodsTest {
 	private static int reportFlag=0;
 	static String strTime;
 	/**
-	 * 
+	 * 
 	 * @param expectedTextColor
 	 * @param actualTextColor
 	 * @param stepName
@@ -50,7 +50,7 @@ public class Cliniops_ReusableMethodsTest {
 		
 	}
 	/**
-	 * 
+	 * 
 	 * @param actualText
 	 * @param expectedText
 	 * @param objName
@@ -215,12 +215,12 @@ public class Cliniops_ReusableMethodsTest {
 		if(obj.isEnabled()){	
 			String actualText = obj.getAttribute(attributeName);
 			if(expectedText.equals(actualText)){
-				updateReport("Pass","validateMsg_Attribute","Actual message matching with expected message:"+ actualText,dr);
+				updateReport("Pass",stepName,"Actual message matching with expected message:"+ actualText,dr);
 			}else{
-				updateReport("Fail","validateMsg_Attribute","Actual message not matching with expected message:"+actualText,dr);
+				updateReport("Fail",stepName,"Actual message not matching with expected message:"+actualText,dr);
 			}
 		}else{
-			updateReport("Fail","validateMsg_Attribute",objName +"is not displayed, please check your application",dr);
+			updateReport("Fail",stepName,objName +"is not displayed, please check your application",dr);
 		}
 	}
 
@@ -280,10 +280,10 @@ public class Cliniops_ReusableMethodsTest {
 
     public static void validateURL(String expectedURL,String ActualURL,String stepName,WebDriver dr) throws IOException{
     	if(expectedURL.trim().equals(ActualURL.trim())){
-    		updateReport("Pass","stepName","Actual URL matching with expected URL",dr);
+    		updateReport("Pass",stepName,"Actual URL matching with expected URL",dr);
     	}
     	else{
-    		updateReport("Fail","stepName","Actual URL matching with expected URL",dr);
+    		updateReport("Fail",stepName,"Actual URL matching with expected URL",dr);
     	}
 
     }
@@ -335,9 +335,8 @@ public class Cliniops_ReusableMethodsTest {
 		wb.close();
         return xlData;
 	}
-    
 	/**
-	 * Start HTML report for the test script
+	* Start HTML report for the test script
 	 * @param scriptName
 	 * @param reportsPath
 	 * @param browser
@@ -349,11 +348,9 @@ public class Cliniops_ReusableMethodsTest {
 			reportFlag=1;
 			String strResultPath = null;
 			String testScriptName =scriptName;
-			
 			Date curDate = new Date(); 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 			String strTimeStamp = dateFormat.format(curDate);
-
 			if (reportsPath == "") { 
 				reportsPath = "C:\\";
 			}
@@ -365,9 +362,7 @@ public class Cliniops_ReusableMethodsTest {
 			f.mkdirs();
 			htmlName = strResultPath  + testScriptName + "_" + strTimeStamp 
 				+ ".html";
-
 			bw = new BufferedWriter(new FileWriter(htmlName));
-
 			bw.write("<HTML><BODY><TABLE BORDER=0 CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
 			bw.write("<TABLE BORDER=0 BGCOLOR=BLACK CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
 			bw.write("<TR><TD BGCOLOR=#66699 WIDTH=27%><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>Browser Name</B></FONT></TD><TD COLSPAN=6 BGCOLOR=#66699><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>"
@@ -381,23 +376,23 @@ public class Cliniops_ReusableMethodsTest {
 		}
 		else{
 			bw.write("<TABLE BORDER=0 BGCOLOR=BLACK CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
-			bw.write("<TR><TD BGCOLOR=#66699 WIDTH=15%><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>Browser Name</B></FONT></TD><TD COLSPAN=6 BGCOLOR=#66699><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>"
+			bw.write("<TR><TD BGCOLOR=#66699 WIDTH=27%><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>Browser Name</B></FONT></TD><TD COLSPAN=6 BGCOLOR=#66699><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>"
 					+ browserName + "</B></FONT></TD></TR>");
 			bw.write("<HTML><BODY><TABLE BORDER=1 CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
-			
 		}
-
 	}
 
+
+
 	/**
-     * Update HTML report for each step
-     * @param resType
-     * @param action
-     * @param result
-     * @param dr
-     * @throws IOException
-     */
-    public static void updateReport(String resType,String action, String result,WebDriver dr) throws IOException {
+    * Update HTML report for each step
+    * @param resType
+    * @param action
+    * @param result
+    * @param dr
+    * @throws IOException
+    */
+   public static void updateReport(String resType,String action, String result,WebDriver dr) throws IOException {
 	    String strTime;
 	    Date execTime = new Date();
 	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -411,10 +406,9 @@ public class Cliniops_ReusableMethodsTest {
 				+ strTime
 				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=10%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
 				+ "Passed"
-				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
+				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=47%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
 				+ result + "</FONT></TD></TR>");
-
-        }
+       }
 	    else if (resType.startsWith("Fail")) {
 		    String ss1Path= screenShot(dr);
 		    exeStatus = "Failed";
@@ -429,11 +423,13 @@ public class Cliniops_ReusableMethodsTest {
 				+ "<a href= "
 				+ ss1Path
 				+ "  style=\"color: #FF0000\"> Failed </a>"
-
-				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = RED>"
+				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=47%><FONT FACE=VERDANA SIZE=2 COLOR = RED>"
 				+ result + "</FONT></TD></TR>");
-        } 
-    }
+       } 
+   }
+
+    
+
 	
     /**
      * Screenshot generation in failed case
