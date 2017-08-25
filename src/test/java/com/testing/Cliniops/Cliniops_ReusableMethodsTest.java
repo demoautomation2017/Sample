@@ -288,6 +288,43 @@ public class Cliniops_ReusableMethodsTest {
 
     }
 
+      
+    public static void checkDropdownDEnableSelectedOpt(WebElement dd,String value,String chkEnable,String stepName ,WebDriver dr) throws IOException{
+    	Select select = new Select(dd);
+    	if(chkEnable.equalsIgnoreCase("Enabled")){	
+    		if(dd.isEnabled() && select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Pass", stepName, stepName + " dropdown is enabled and value "+ value + " is selected", dr);
+    			System.out.println(select.getFirstSelectedOption().getText());
+    		}
+    		else if(!dd.isEnabled() && select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Fail", stepName, stepName + " dropdown is disabled and value "+ value + " is selected", dr);
+    		}
+    		else if(dd.isEnabled() && !select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Fail", stepName, stepName + " dropdown is enabled and value "+ value + " is selected", dr);
+    			System.out.println("hellooo****");
+    			System.out.println(select.getFirstSelectedOption().getText());
+    		}
+    		else{
+    			updateReport("Fail", stepName, stepName + " dropdown is disabled and value "+ value + " is selected", dr);
+    		}
+    	}
+    	else if(chkEnable.equalsIgnoreCase("Disabled")){
+    		if(!dd.isEnabled() && select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Pass", stepName, stepName + " dropdown is disabled and value "+ value + " is selected", dr);
+    		}
+    		else if(dd.isEnabled() && select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Fail", stepName,stepName + " dropdown is enabled and value "+ value + " is selected" , dr);
+    		}
+    		else if(!dd.isEnabled() && !select.getFirstSelectedOption().getText().equalsIgnoreCase(value)){
+    			updateReport("Fail", stepName, stepName + " dropdown is disabled and value "+ value + " is selected", dr);
+    		}
+    		else{
+    			updateReport("Fail", stepName, stepName + " dropdown is enabled and value "+ value + " is selected", dr);
+    		}
+    	}
+    	
+    }
+    
     
     /**
      * Read data from excel sheet
@@ -471,7 +508,7 @@ public class Cliniops_ReusableMethodsTest {
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		dr.findElement(By.id("username")).sendKeys("Abhishek");
 		Thread.sleep(2000);
-		dr.findElement(By.id("password")).sendKeys("Welcome123#");
+		dr.findElement(By.id("password")).sendKeys("Testing@123");
 		Thread.sleep(2000);
 		dr.findElement(By.id("Authenticate")).click();
 		Thread.sleep(5000);
