@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,19 +18,22 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Cliniops_ReusableMethodsTest {   
-    static String htmlName=null;
-	static BufferedWriter bw = null;
-	static String exeStatus = "True";
-	static int report;
-	static int rowCount = 1;
+    private static String htmlName=null;
+    private static String scriptPath = null;  
+    private static BufferedWriter bw = null;
+	private static boolean isPass = true;  
+    private static String testScriptName = null; 
+    private static int rowCount = 1;
 	private static String browserName=null;
 	private static int reportFlag=0;
-	static String strTime;
+	static String strTime; 
+	private static String firefoxRes=null; 
+	private static String chromeRes=null; 
+	private static String ieRes=null; 
+	
 	/**
 	 * 
 	 * @param expectedTextColor
@@ -288,7 +290,16 @@ public class Cliniops_ReusableMethodsTest {
 
     }
 
-      
+    
+    /**
+     * To check if dropdown is either enabled and an option selected or Disabled and an option selected
+     * @param dd
+     * @param value : Expected option selected from dropdown
+     * @param chkEnable : Contains string "Enabled" or "Disabled" depending on what is expected in the testcase
+     * @param stepName 
+     * @param dr
+     * @throws IOException
+     */
     public static void checkDropdownDEnableSelectedOpt(WebElement dd,String value,String chkEnable,String stepName ,WebDriver dr) throws IOException{
     	Select select = new Select(dd);
     	if(chkEnable.equalsIgnoreCase("Enabled")){	
@@ -384,7 +395,9 @@ public class Cliniops_ReusableMethodsTest {
 		if(reportFlag==0){
 			reportFlag=1;
 			String strResultPath = null;
-			String testScriptName =scriptName;
+			
+			testScriptName=scriptName; 
+			
 			Date curDate = new Date(); 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 			String strTimeStamp = dateFormat.format(curDate);
@@ -395,11 +408,18 @@ public class Cliniops_ReusableMethodsTest {
 				reportsPath = reportsPath + "\\";
 			}
 			strResultPath = reportsPath + "Log" + "/" +testScriptName +"/"; 
+			//File f is only used to create directory for the script result 
 			File f = new File(strResultPath);
 			f.mkdirs();
 			htmlName = strResultPath  + testScriptName + "_" + strTimeStamp 
 				+ ".html";
-			bw = new BufferedWriter(new FileWriter(htmlName));
+			
+			//Getting absolute path of script report to update reference in summary report   
+			File rep = new File(htmlName);                        
+			FileWriter report = new FileWriter(rep);              
+			scriptPath = rep.getAbsolutePath();                   
+			bw = new BufferedWriter(report);      
+			
 			bw.write("<HTML><BODY><TABLE BORDER=0 CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
 			bw.write("<TABLE BORDER=0 BGCOLOR=BLACK CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
 			bw.write("<TR><TD BGCOLOR=#66699 WIDTH=27%><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>Browser Name</B></FONT></TD><TD COLSPAN=6 BGCOLOR=#66699><FONT FACE=VERDANA COLOR=WHITE SIZE=2><B>"
@@ -410,6 +430,7 @@ public class Cliniops_ReusableMethodsTest {
 				+ "<TD BGCOLOR=#BDBDBD WIDTH=10%><FONT FACE=VERDANA COLOR=BLACK SIZE=2><B>Execution Time</B></FONT></TD> "
 				+ "<TD BGCOLOR=#BDBDBD WIDTH=10%><FONT FACE=VERDANA COLOR=BLACK SIZE=2><B>Status</B></FONT></TD>"
 				+ "<TD BGCOLOR=#BDBDBD WIDTH=47%><FONT FACE=VERDANA COLOR=BLACK SIZE=2><B>Detail Report</B></FONT></TD></TR>");
+			startSummaryReport(reportsPath);    
 		}
 		else{
 			bw.write("<TABLE BORDER=0 BGCOLOR=BLACK CELLPADDING=3 CELLSPACING=1 WIDTH=100%>");
@@ -435,7 +456,9 @@ public class Cliniops_ReusableMethodsTest {
 	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 	    strTime = dateFormat.format(execTime);
 	    if (resType.startsWith("Pass")) {
-		    bw.write("<TR COLS=7><TD BGCOLOR=#EEEEEE WIDTH=3%><FONT FACE=VERDANA SIZE=2>"
+		    if(isPass!=false)
+		    	isPass=true;   
+	    	bw.write("<TR COLS=7><TD BGCOLOR=#EEEEEE WIDTH=3%><FONT FACE=VERDANA SIZE=2>"
 				+ (rowCount++)
 				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=10%><FONT FACE=VERDANA SIZE=2>"
 				+action
@@ -445,11 +468,12 @@ public class Cliniops_ReusableMethodsTest {
 				+ "Passed"
 				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=47%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
 				+ result + "</FONT></TD></TR>");
+		    
        }
 	    else if (resType.startsWith("Fail")) {
-		    String ss1Path= screenShot(dr);
-		    exeStatus = "Failed";
-		    report = 1;
+		    isPass=false; 
+	    	String ss1Path= screenShot(dr);
+		    
 		    bw.write("<TR COLS=7><TD BGCOLOR=#EEEEEE WIDTH=3%><FONT FACE=VERDANA SIZE=2>"
 				+ (rowCount++)
 				+ "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=10%><FONT FACE=VERDANA SIZE=2>"
@@ -465,7 +489,45 @@ public class Cliniops_ReusableMethodsTest {
        } 
    }
 
-    
+   /**
+	 * Start the summary report for the test suite and record start time
+	 * @param scriptName
+	 * @param reportsPath
+	 * @throws IOException
+	 */
+	public static void startSummaryReport(String reportsPath) throws IOException{
+
+		//set SummaryReport start time
+		if(CliniopsSummaryReport.getExecutionStartTime() == 0)
+			CliniopsSummaryReport.setExecutionStartTime();
+		
+	}
+	
+	/**
+	 * Add test script execution result and script Location to CliniopsSummaryReport object
+	 * @throws IOException
+	 */
+	public static void updateSummaryReport() throws IOException{
+		CliniopsSummaryReport.setNumTests(CliniopsSummaryReport.getNumTests()+1);
+		CliniopsSummaryReport.updateTestResults(testScriptName, scriptPath, firefoxRes, chromeRes, ieRes);
+		firefoxRes = null;
+		chromeRes = null;
+		ieRes = null;
+		
+	}
+
+	/**
+	 * Write the summary report at end of execution of all test cases
+	 * @param reportsPath
+	 */
+	public static void writeSummaryReport(String reportsPath){
+		CliniopsSummaryReport.writeReport(reportsPath);
+		firefoxRes = null;
+		chromeRes = null;
+		ieRes = null;
+	}
+	
+   
 
 	
     /**
@@ -496,7 +558,8 @@ public class Cliniops_ReusableMethodsTest {
 		rowCount = 1;
 		browserName = null;
 		reportFlag = 0;
-		htmlName = null;
+		//htmlName = null;
+		scriptPath=null;
 		bw.close();
 	}
 	/**   
@@ -518,6 +581,28 @@ public class Cliniops_ReusableMethodsTest {
 		dr.findElement(By.xpath(".//*[@id='login']/div[7]/input")).click();
 	}
   
+    public void updateResults(){
+
+    	if(browserName.equalsIgnoreCase("Firefox")){
+    		if(isPass)
+    			firefoxRes = "Pass";
+    		else
+    			firefoxRes = "Fail";
+    	}
+    	else if(browserName.equalsIgnoreCase("Chrome")){
+    		if(isPass)
+    			chromeRes = "Pass";
+    		else
+    			chromeRes = "Fail";
+    	}
+    	else if(browserName.equalsIgnoreCase("IE")){
+    		if(isPass)
+    			ieRes = "Pass";
+    		else
+    			ieRes = "Fail";
+    	}
+
+    }
 
 
 }

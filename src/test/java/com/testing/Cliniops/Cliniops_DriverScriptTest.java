@@ -52,13 +52,17 @@ public class Cliniops_DriverScriptTest {
 					testcase.invoke(casObject);
 					casObject.closeBrowser();
 				}						
-				//Close report after running tests for all required browsers
+				//Update Data for Summary Report after test run for all browsers
+				Cliniops_ReusableMethodsTest.updateSummaryReport();
+				//Close individual test script report
 				Cliniops_ReusableMethodsTest.closeReport();					
 			}
 			else if(recData[i][1].equalsIgnoreCase("n")){
 				System.out.println(recData[i][2] + "in line number "+i+ "skipped from execution");
 			}
 		}	
+		//Write and close summary report
+		Cliniops_ReusableMethodsTest.writeSummaryReport(reportsPath);
 
 	}
 }
