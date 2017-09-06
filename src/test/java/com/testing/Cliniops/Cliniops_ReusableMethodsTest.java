@@ -601,7 +601,7 @@ public class Cliniops_ReusableMethodsTest {
     		else
     			ieRes = "Fail";
     	}
-
+    	isPass=true;
     }
 
 
