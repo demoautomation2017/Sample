@@ -1,5 +1,5 @@
 package com.testing.Cliniops;
-
+  
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
   
-public class Cliniops_ReusableMethodsTest {   
+public class Cliniops_ReusableMethodsTest {     
 	private static String htmlName=null;
 	private static String scriptPath = null;
 	private static BufferedWriter bw = null;

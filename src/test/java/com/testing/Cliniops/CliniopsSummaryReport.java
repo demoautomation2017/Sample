@@ -1,5 +1,5 @@
 package com.testing.Cliniops;
-
+  
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-  
+    
 public class CliniopsSummaryReport {
 
 	private static int numTests = 0;       

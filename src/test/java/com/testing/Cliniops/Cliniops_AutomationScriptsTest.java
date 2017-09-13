@@ -24,12 +24,9 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+  
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 	WebDriver dr;
-	
-	
-	
 	
 	@BeforeMethod    
 	@Parameters({"browser"})
