@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class Cliniops_DriverScriptTest {         
-
+ 
 	//static int x;
 	static ArrayList elementList=new ArrayList();
 	static String[][] locatorsData;

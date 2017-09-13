@@ -310,7 +310,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		//WebElement rightFooter=dr.findElement(By.id("footer-right"));
 		WebElement rightFooter=Cliniops_ReusableMethodsTest.findTheElement("login_RightFooter",Cliniops_DriverScriptTest.browserRunning,dr);
-		validateText(rightFooter, "Version : 2.0.27", "Right Footer:Version 2.0.27 ","Right Footer",dr);
+		validateText(rightFooter, "Version : 2.0.27", "Right Footer:Version 2.0.27","Right Footer",dr);
 		//WebElement logo=dr.findElement(By.xpath(".//*[@id='logo']/h1/a/img"));
 		WebElement logo=Cliniops_ReusableMethodsTest.findTheElement("login_Logo",Cliniops_DriverScriptTest.browserRunning,dr);
 		if(logo.isDisplayed()){
@@ -322,51 +322,43 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 	}
 
 
+
 	@Test
 	public void auto_Clini_Home_001() throws InterruptedException, IOException{
 		login(dr);
 		Thread.sleep(2000);
-		//WebElement homeStudyLogo=dr.findElement(By.xpath(".//*[@id='logo']/h1/a/img"));
-		WebElement homeStudyLogo=Cliniops_ReusableMethodsTest.findTheElement("home_StudyLogo",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement homeStudyLogo=dr.findElement(By.xpath(".//*[@id='logo']/h1/a/img"));
 		checkObjectDisplay(homeStudyLogo,"home Study  Logo","HomePage Study Logo",dr);
 		Thread.sleep(2000);
-		//WebElement WelcomeUsername=dr.findElement(By.xpath(".//*[@id='header-right']/span[1]"));
-		WebElement WelcomeUsername=Cliniops_ReusableMethodsTest.findTheElement("home_WelcomeUn",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement WelcomeUsername=dr.findElement(By.xpath(".//*[@id='header-right']/span[1]"));
 		checkObjectDisplay(WelcomeUsername,"WelcomeUsername","Welcome User_Full_Name",dr);
 		Thread.sleep(2000);
-		//WebElement homePageStudyPortal=dr.findElement(By.xpath(".//*[@id='header-right']/span[2]/b"));
-		WebElement homePageStudyPortal=Cliniops_ReusableMethodsTest.findTheElement("home_StudyPortal",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement homePageStudyPortal=dr.findElement(By.xpath(".//*[@id='header-right']/span[2]/b"));
 		checkObjectDisplay(homePageStudyPortal,"homePageStudyPortal","homePageStudyPortal",dr);
 		Thread.sleep(2000);
-		//WebElement logout=dr.findElement(By.xpath("//input[@value='Logout']"));		
-		WebElement logout=Cliniops_ReusableMethodsTest.findTheElement("home_LogoutBtn",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement logout=dr.findElement(By.xpath("//input[@value='Logout']"));		
 		checkEnabled(logout,"logout",dr);
 		Thread.sleep(2000);
 		if(logout.isEnabled()){
 			checkObjectDisplay(logout,"logout","logout",dr);
 		}
 		Thread.sleep(2000);
-		//WebElement homePageStudyName=dr.findElement(By.xpath(".//*[@id='header-right']/div/span"));
-		WebElement homePageStudyName=Cliniops_ReusableMethodsTest.findTheElement("home_StudyName",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement homePageStudyName=dr.findElement(By.xpath(".//*[@id='header-right']/div/span"));
 		checkObjectDisplay(homePageStudyName,"homePageStudyName","homePageStudyName",dr);
 		Thread.sleep(2000);
-		//WebElement enrollmentCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[1]/span[2]"));
-		WebElement enrollmentCount=Cliniops_ReusableMethodsTest.findTheElement("home_EnrollmentCnt",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement enrollmentCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[1]/span[2]"));
 		String expectedEnrollmentCount="300";
 		validateText(enrollmentCount, expectedEnrollmentCount, "Enrollment count","Enrollment",dr);
 		Thread.sleep(2000);
-		//WebElement groupsCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/span[2]"));
-		WebElement groupsCount=Cliniops_ReusableMethodsTest.findTheElement("home_GroupsCnt",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement groupsCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/span[2]"));
 		String expectedGroupsCount="2";
 		validateText(groupsCount, expectedGroupsCount, "Groups count","Groups",dr);
 		Thread.sleep(2000);
-		//WebElement sitesCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[3]/span[2]"));
-		WebElement sitesCount=Cliniops_ReusableMethodsTest.findTheElement("home_SitesCnt",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement sitesCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[3]/span[2]"));
 		String expectedSitesCount="2";
 		validateText(sitesCount, expectedSitesCount, "Sites count","Sites",dr);
 		Thread.sleep(2000);
-		//WebElement visitsCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[4]/span[2]"));
-		WebElement visitsCount=Cliniops_ReusableMethodsTest.findTheElement("home_VisitsCnt",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement visitsCount=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[4]/span[2]"));
 		String expectedVisitsCount="5";
 		validateText(visitsCount, expectedVisitsCount, "Visits count","Visits",dr);
 	}
@@ -407,9 +399,9 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 				"Download PDF document",
 				"Download SVG vector image"
 		};
-		
+
 		String locator = "div[id=";
-		//Navigate through the list elements 
+		//Navigate through the list elements 
 		for(int i=0; i< graphs.size(); i++){
 			WebElement chartObj = graphs.get(i);
 			action.moveToElement(chartObj).build().perform();
@@ -425,7 +417,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 			Thread.sleep(1000);
 			action.moveToElement(chartMenu).build().perform();
 			Thread.sleep(2000);
-			System.out.println("********1*********");
+
 			//chartMenu.click();
 			String ExpectedBrowser="org.openqa.selenium.firefox.FirefoxDriver";
 			String ActualBrowser=dr.getClass().getName();
@@ -457,160 +449,124 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		login(dr);
 		Thread.sleep(2000);
 		//Configure Tab
-		//WebElement configure= dr.findElement(By.xpath("//*[contains(text(),'Configure')]"));
-		WebElement configure=Cliniops_ReusableMethodsTest.findTheElement("home_ConfigureTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement configure= dr.findElement(By.xpath("//*[contains(text(),'Configure')]"));
 		clickElement(configure, "Configure", "Configure Tab details", dr);
-		System.out.println("CONFIGURE--CLICKED");
 		String expectedConfigUrl="https://bridgetherapeutics.cliniops.com/investigator/configurestudy/general";
 		String actualConfigUrl=dr.getCurrentUrl();
 		validateURL(expectedConfigUrl,actualConfigUrl,"Configure URL Check",dr);
-		System.out.println("CONFIGURE-URL");
 		Actions action=new Actions(dr);
-		//action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Configure')]"))).build().perform();
-		action.moveToElement(Cliniops_ReusableMethodsTest.findTheElement("home_ConfigureTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
-		System.out.println("CONFIGURE--MOVETO");
+		action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Configure')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor11="rgba(255, 255, 255, 1)";
-		//String actualTextColor11 = dr.findElement(By.xpath("//*[contains(text(),'Configure')]")).getCssValue("color");
-		String actualTextColor11 =Cliniops_ReusableMethodsTest.findTheElement("home_ConfigureTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
+		String actualTextColor11 = dr.findElement(By.xpath("//*[contains(text(),'Configure')]")).getCssValue("color");
 		checkHighlightText(expectedTextColor11,actualTextColor11,"Configure tab Highlight",dr);
-		System.out.println("CONFIGURE--CHECKHIGHLIGHT");
-		//WebElement studyDetails=dr.findElement(By.xpath(".//*[@id='content-body']/div[1]/div/div[2]/div[1]/ul/li[1]/a"));
-		WebElement studyDetails=Cliniops_ReusableMethodsTest.findTheElement("home_ConfigTabStudyDetails",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement studyDetails=dr.findElement(By.xpath(".//*[@id='content-body']/div[1]/div/div[2]/div[1]/ul/li[1]/a"));
 		action.moveToElement(studyDetails).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor12="rgba(255, 255, 255, 1)";
 		String actualTextColor12 = studyDetails.getCssValue("color");
 		checkHighlightText(expectedTextColor12,actualTextColor12,"Study Details Highlight",dr);
-		System.out.println("CONFIGURE--CHECKNEXTHIGHLIGHT");
-		//WebElement studyDetailsPage= dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
-		WebElement studyDetailsPage=Cliniops_ReusableMethodsTest.findTheElement("home_StudyDetailsPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement studyDetailsPage= dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
 		String actualText=studyDetailsPage.getText().substring(0, 13);
 		String expectedText="Study Details";
 		checkContentsMatch(actualText,expectedText,"Study Details","Configure Study Details",dr); 
 		Thread.sleep(3000);
-		System.out.println("CONFIGURE TAB COMPLETED");
 		//Manage Tab
-		//WebElement manage= dr.findElement(By.xpath("//a[contains(text(),'Manage')]"));
-		WebElement manage=Cliniops_ReusableMethodsTest.findTheElement("home_ManageTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement manage= dr.findElement(By.xpath("//a[contains(text(),'Manage')]"));
 		clickElement(manage, "Manage Tab", "Manage Tab details", dr);
 		String expectedManageUrl="https://bridgetherapeutics.cliniops.com/investigator/managestudy/roles";
 		String actualManageUrl=dr.getCurrentUrl();
 		validateURL(expectedManageUrl,actualManageUrl,"Manage URL Check",dr);
-		//action.moveToElement(dr.findElement(By.xpath("//a[contains(text(),'Manage')]"))).build().perform();
-		action.moveToElement(findTheElement("home_ManageTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
+		action.moveToElement(dr.findElement(By.xpath("//a[contains(text(),'Manage')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor21="rgba(255, 255, 255, 1)";
-		//String actualTextColor21 = dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).getCssValue("color");
-		String actualTextColor21 =findTheElement("home_ManageTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
+		String actualTextColor21 = dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).getCssValue("color");
 		checkHighlightText(expectedTextColor21,actualTextColor21,"Manage tab Highlight",dr);
-		//WebElement roles=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[1]/ul/li[1]/a"));
-		WebElement roles=Cliniops_ReusableMethodsTest.findTheElement("home_ManageTabRoles",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement roles=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[1]/ul/li[1]/a"));
 		action.moveToElement(roles).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor22="rgba(255, 255, 255, 1)";
 		String actualTextColor22 = roles.getCssValue("color");
 		checkHighlightText(expectedTextColor22,actualTextColor22,"Roles Highlight",dr);
-		//WebElement studyUserRoles= dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
-		WebElement studyUserRoles=Cliniops_ReusableMethodsTest.findTheElement("home_StudyUserRolesPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement studyUserRoles= dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
 		String actualText2=studyUserRoles.getText().substring(0, 16);
 		String expectedText2="Study User Roles";
 		checkContentsMatch(actualText2,expectedText2,"Study User Roles","Study User Roles",dr); 
 		Thread.sleep(3000);
 
 		//Analyze Tab
-		//WebElement analyze= dr.findElement(By.xpath("//*[contains(text(),'Analyze')]"));
-		WebElement analyze=Cliniops_ReusableMethodsTest.findTheElement("home_AnalyzeTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement analyze= dr.findElement(By.xpath("//*[contains(text(),'Analyze')]"));
 		clickElement(analyze, "Analyze Tab", "Analyze Tab details", dr);
 		String expectedAnalyzeUrl="https://bridgetherapeutics.cliniops.com/investigator/analyzestudy";
 		String actualAnalyzeUrl=dr.getCurrentUrl();
 		validateURL(expectedAnalyzeUrl,actualAnalyzeUrl,"Analyze URL Check",dr);
-		//action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Analyze')]"))).build().perform();
-		action.moveToElement(findTheElement("home_AnalyzeTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
+		action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Analyze')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor31="rgba(255, 255, 255, 1)";
-		//String actualTextColor31 = dr.findElement(By.xpath("//*[contains(text(),'Analyze')]")).getCssValue("color");
-		String actualTextColor31 = findTheElement("home_AnalyzeTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
+		String actualTextColor31 = dr.findElement(By.xpath("//*[contains(text(),'Analyze')]")).getCssValue("color");
 		checkHighlightText(expectedTextColor31,actualTextColor31,"Manage tab Highlight",dr);
-		//WebElement export=dr.findElement(By.xpath(".//*[@id='content-body']/div/div[1]/div[2]/ul/li[1]/a"));
-		WebElement export=Cliniops_ReusableMethodsTest.findTheElement("home_AnalyzeTabExport",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement export=dr.findElement(By.xpath(".//*[@id='content-body']/div/div[1]/div[2]/ul/li[1]/a"));
 		action.moveToElement(export).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor32="rgba(255, 255, 255, 1)";
 		String actualTextColor32 = export.getCssValue("color");
 		checkHighlightText(expectedTextColor32,actualTextColor32,"Export Highlight",dr);    	
-		//WebElement studyAnalysis = dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
-		WebElement studyAnalysis = Cliniops_ReusableMethodsTest.findTheElement("home_StudyAnalysisPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement studyAnalysis = dr.findElement(By.xpath("//div[@id='content-body']/div/div/h3"));
 		String actualText3=studyAnalysis.getText().substring(0, 14);
 		String expectedText3="Study Analysis";
 		checkContentsMatch(actualText3,expectedText3,"Study Analysis","Study Analysis",dr); 
 		Thread.sleep(3000);
 		//Subjects Tab
-		//WebElement subjects= dr.findElement(By.xpath("//*[contains(text(),'Subjects')]"));
-		WebElement subjects=Cliniops_ReusableMethodsTest.findTheElement("home_SubjectsTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement subjects= dr.findElement(By.xpath("//*[contains(text(),'Subjects')]"));
 		clickElement(subjects, "Subjects Tab", "Subjects Tab details", dr);
 		String expectedSubjectsUrl="https://bridgetherapeutics.cliniops.com/investigator/viewsubjects";
 		String actualSubjectsUrl=dr.getCurrentUrl();
 		validateURL(expectedSubjectsUrl,actualSubjectsUrl,"Subjects URL Check",dr);
-		//action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Subjects')]"))).build().perform();
-		action.moveToElement(findTheElement("home_SubjectsTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
+		action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Subjects')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor41="rgba(255, 255, 255, 1)";
-		//String actualTextColor41 = dr.findElement(By.xpath(".//*[@id='nav']/ul/li[5]/a")).getCssValue("color");
-		String actualTextColor41 = findTheElement("home_SubjectsTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
-		System.out.println("ACTUAL TEXT COLOR : "+ actualTextColor41);
+		String actualTextColor41 = dr.findElement(By.xpath(".//*[@id='nav']/ul/li[5]/a")).getCssValue("color");
 		checkHighlightText(expectedTextColor41,actualTextColor41,"Subjects tab Highlight",dr);      	  	
-		//WebElement subjectSummary = dr.findElement(By.xpath(".//*[@id='content-body']/div/div[2]/div[1]/h3"));
-		WebElement subjectSummary = Cliniops_ReusableMethodsTest.findTheElement("home_SubjectSummaryPartPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement subjectSummary = dr.findElement(By.xpath(".//*[@id='content-body']/div/div[2]/div[1]/h3"));
 		String actualText41=subjectSummary.getText();
 		String expectedText41="Subject Summary";
 		checkContentsMatch(actualText41,expectedText41,"Subject Summary","Subject Summary",dr); 
 		Thread.sleep(3000);
-		//WebElement subjectData = dr.findElement(By.xpath(".//*[@id='content-body']/div/div[2]/div[2]/h3"));
-		WebElement subjectData =Cliniops_ReusableMethodsTest.findTheElement("home_SubjectDataPartPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement subjectData = dr.findElement(By.xpath(".//*[@id='content-body']/div/div[2]/div[2]/h3"));
 		String actualText42=subjectData.getText();
 		String expectedText42="Subject Data";
 		checkContentsMatch(actualText42,expectedText42,"Subject Data","Subject Data",dr); 
 		//Audit
-		//WebElement audit= dr.findElement(By.xpath("//*[contains(text(),'Audit')]"));
-		WebElement audit= Cliniops_ReusableMethodsTest.findTheElement("home_AuditTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement audit= dr.findElement(By.xpath("//*[contains(text(),'Audit')]"));
 		clickElement(audit, "Audit Tab", "Audit Tab details", dr);
 		String expectedAuditUrl="https://bridgetherapeutics.cliniops.com/investigator/audittrial";
 		String actualAuditUrl=dr.getCurrentUrl();
 		validateURL(expectedAuditUrl,actualAuditUrl,"Audit URL Check",dr);
-		//action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Audit')]"))).build().perform();
-		action.moveToElement(findTheElement("home_AuditTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
+		action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Audit')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor51="rgba(255, 255, 255, 1)";
-		//String actualTextColor51 = dr.findElement(By.xpath("//*[contains(text(),'Audit')]")).getCssValue("color");
-		String actualTextColor51 = findTheElement("home_AuditTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
+		String actualTextColor51 = dr.findElement(By.xpath("//*[contains(text(),'Audit')]")).getCssValue("color");
 		checkHighlightText(expectedTextColor51,actualTextColor51,"Audit tab Highlight",dr);     
-		//WebElement auditTrail = dr.findElement(By.xpath(".//*[text()='Audit Trail']"));
-		WebElement auditTrail = Cliniops_ReusableMethodsTest.findTheElement("home_AuditTrialPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement auditTrail = dr.findElement(By.xpath(".//*[text()='Audit Trail']"));
 		String actualText5=auditTrail.getText();
 		String expectedText5="Audit Trail";
 		checkContentsMatch(actualText5,expectedText5,"Audit Trail","Audit Trail",dr); 
 		//Profile Tab
-		//WebElement profile= dr.findElement(By.xpath("//*[contains(text(),'Profile')]"));
-		WebElement profile= Cliniops_ReusableMethodsTest.findTheElement("home_ProfileTab",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement profile= dr.findElement(By.xpath("//*[contains(text(),'Profile')]"));
 		clickElement(profile, "Profile Tab", "Profile Tab details", dr);    	
 		String expectedProfileUrl="https://bridgetherapeutics.cliniops.com/investigator/profile";
 		String actualProfileUrl=dr.getCurrentUrl();
 		validateURL(expectedProfileUrl,actualProfileUrl,"Profile URL Check",dr);
-		//action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Profile')]"))).build().perform();
-		action.moveToElement(findTheElement("home_ProfileTab",Cliniops_DriverScriptTest.browserRunning,dr)).build().perform();
+		action.moveToElement(dr.findElement(By.xpath("//*[contains(text(),'Profile')]"))).build().perform();
 		Thread.sleep(3000);
 		String expectedTextColor61="rgba(255, 255, 255, 1)";
-		//String actualTextColor61 = dr.findElement(By.xpath(".//*[text()='Profile']")).getCssValue("color");
-		String actualTextColor61 = findTheElement("home_ProfileTab",Cliniops_DriverScriptTest.browserRunning,dr).getCssValue("color");
+		String actualTextColor61 = dr.findElement(By.xpath(".//*[text()='Profile']")).getCssValue("color");
 		checkHighlightText(expectedTextColor61,actualTextColor61,"Profile tab Highlight",dr);  
-		//WebElement profileInformation = dr.findElement(By.xpath(".//*[@id='content-body']/div[2]/div/h3"));
-		WebElement profileInformation = Cliniops_ReusableMethodsTest.findTheElement("home_ProfileInfoPage",Cliniops_DriverScriptTest.browserRunning,dr);
+		WebElement profileInformation = dr.findElement(By.xpath(".//*[@id='content-body']/div[2]/div/h3"));
 		String actualText6=profileInformation.getText();
 		String expectedText6="Profile Information";
 		checkContentsMatch(actualText6,expectedText6,"Profile Information","Profile Information",dr); 
 	}
-	
 	@Test
 	public void auto_Clini_Confg_001() throws InterruptedException, IOException{
 		login(dr);
@@ -986,11 +942,10 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 	@Test
 	public void auto_Clini_Manage_003() throws InterruptedException,IOException{
 		Actions tooltip = new Actions(dr);
-		System.out.println("entered");
 		login(dr);
-		System.out.println("login");
 		Thread.sleep(3000);
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		WebElement addRoles=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/h3/span/a"));
 		Thread.sleep(3000);
 		tooltip.moveToElement(addRoles).build().perform();
@@ -1079,12 +1034,6 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//jse.executeScript("window.scrollBy(0,500)");
 		WebElement users = dr.findElement(By.xpath(".//*[@id='edit_ms_users']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", users);
-		//WebElement users=(WebElement) jse.executeScript("document.getElementByXpath('.//*[@id='edit_ms_users']');");
-		//WebElement users=(WebElement) jse.executeScript("return document.getElementById('edit_ms_users');");
-		/*String users=jse.executeScript("return arguments[0].value;",dr.findElement(By.xpath(".//*[@id='edit_ms_users']"))).toString();
-		String expectedUsers = "Write";
-		checkContentsMatch(users,expectedUsers,"verify Write is present in the users dropdown textbox","verify Write is present in the users dropdown textbox",dr);
-		*/
 		checkDropdownDEnableSelectedOpt(users, "Write", "Disabled", "verify Write is present in the users dropdown textbox", dr);
 		
 		
@@ -1115,9 +1064,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement formReview = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
     	checkDropdownDEnableSelectedOpt(formReview, "None", "Disabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
+    	Thread.sleep(6000);
 		WebElement unlock_subject_site = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site, "None", "Disabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
 		//#20
+		Thread.sleep(6000);
 		WebElement siteLock = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
 		checkDropdownDEnableSelectedOpt(siteLock, "None", "Disabled", "verify Write is present in the site_lock dropdown textbox", dr);
 		//#21
@@ -1130,6 +1082,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement syncData = dr.findElement(By.xpath(".//*[@id='edit_ipad_syncdata']"));
 		checkDropdownDEnableSelectedOpt(syncData, "None", "Disabled", "verify Write is present in the sync_data dropdown textbox", dr);
 		//#24
+		Thread.sleep(4000);
 		WebElement visitData = dr.findElement(By.xpath(".//*[@id='edit_ipad_visitdata']"));
 		checkDropdownDEnableSelectedOpt(visitData, "None", "Disabled", "verify Write is present in the visitdata dropdown textbox", dr);
 		//#25
@@ -1218,9 +1171,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement formReview1 = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
 		checkDropdownDEnableSelectedOpt(formReview1, "Write", "Disabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
-		WebElement unlock_subject_site1 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		Thread.sleep(6000);
+	WebElement unlock_subject_site1 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site1);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site1, "Write", "Disabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
-		//#20
+			//#20
+		Thread.sleep(6000);
 		WebElement siteLock1 = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
 		checkDropdownDEnableSelectedOpt(siteLock1, "None", "Disabled", "verify Write is present in the site_lock dropdown textbox", dr);
 		//#21
@@ -1233,6 +1189,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement syncData1 = dr.findElement(By.xpath(".//*[@id='edit_ipad_syncdata']"));
 		checkDropdownDEnableSelectedOpt(syncData1, "Write", "Disabled", "verify Write is present in the sync_data dropdown textbox", dr);
 		//#24
+		Thread.sleep(4000);
 		WebElement visitData1 = dr.findElement(By.xpath(".//*[@id='edit_ipad_visitdata']"));
 		checkDropdownDEnableSelectedOpt(visitData1, "Write", "Disabled", "verify Write is present in the visitdata dropdown textbox", dr);
 		//#25
@@ -1319,9 +1276,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement formReview2 = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
 		checkDropdownDEnableSelectedOpt(formReview2, "Write", "Enabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
+		Thread.sleep(6000);
 		WebElement unlock_subject_site2 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site2);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site2, "None", "Enabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
 		//#20
+		Thread.sleep(6000);
 		WebElement siteLock2 = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
 		checkDropdownDEnableSelectedOpt(siteLock2, "None", "Enabled", "verify Write is present in the site_lock dropdown textbox", dr);
 		//#21
@@ -1334,6 +1294,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement syncData2 = dr.findElement(By.xpath(".//*[@id='edit_ipad_syncdata']"));
 		checkDropdownDEnableSelectedOpt(syncData2, "None", "Enabled", "verify Write is present in the sync_data dropdown textbox", dr);
 		//#24
+		Thread.sleep(4000);
 		WebElement visitData2 = dr.findElement(By.xpath(".//*[@id='edit_ipad_visitdata']"));
 		checkDropdownDEnableSelectedOpt(visitData2, "None", "Enabled", "verify Write is present in the visitdata dropdown textbox", dr);
 		//#25
@@ -1359,7 +1320,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement datamanager_deleteRecord_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[2]/div/a[2]/img"));
 		Thread.sleep(3000);
 		clickElement(datamanager_deleteRecord_obj, "data manager delete record object", "clicked on delete record icon ", dr);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		WebElement cancel3 = dr.findElement(By.xpath("html/body/div[4]/div[3]/div/button[2]"));
 
 		if(cancel3.isDisplayed())
@@ -1445,9 +1406,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
     	WebElement formReview3 = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
 		checkDropdownDEnableSelectedOpt(formReview3, "None", "Enabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
+		Thread.sleep(6000);
 		WebElement unlock_subject_site3 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site3);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site3, "None", "Enabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
 		//#20
+		Thread.sleep(6000);
 		WebElement siteLock3 = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
     	checkDropdownDEnableSelectedOpt(siteLock3, "None", "Enabled", "verify Write is present in the site_lock dropdown textbox", dr);
 		//#21
@@ -1460,6 +1424,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement syncData3 = dr.findElement(By.xpath(".//*[@id='edit_ipad_syncdata']"));
 		checkDropdownDEnableSelectedOpt(syncData3, "Write", "Enabled", "verify Write is present in the sync_data dropdown textbox", dr);
 		//#24
+		Thread.sleep(4000);
 		WebElement visitData3 = dr.findElement(By.xpath(".//*[@id='edit_ipad_visitdata']"));
 		checkDropdownDEnableSelectedOpt(visitData3, "Write", "Enabled", "verify Write is present in the visitdata dropdown textbox", dr);
 		//#25
@@ -1485,7 +1450,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement site_co_deleteIcon_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[2]/div/a[2]/img"));
     	Thread.sleep(3000);
 		clickElement(site_co_deleteIcon_obj, "site_co_ord_delete icon object", "clicking on site coOrdinator  delete icon", dr);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		WebElement cancel4 = dr.findElement(By.xpath("html/body/div[4]/div[3]/div/button[2]"));
     	if(cancel4.isDisplayed())
 		{
@@ -1506,6 +1471,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		Actions mouseover=new Actions(dr);
 		Thread.sleep(3000);
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		WebElement addRoles=dr.findElement(By.xpath(".//*[@id='content-body']/div/div/h3/span/a"));
 		clickElement(addRoles, "Add Roles button", "Click Add Roles button", dr);
 		WebElement roleName=dr.findElement(By.id("inv_role_name"));
@@ -1606,6 +1572,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		login(dr);
 		Thread.sleep(3000);
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		WebElement Users=dr.findElement(By.xpath(".//*[text()='Users']"));
 		clickElement(Users,"Users Tab", "Users Tab", dr);
 		Thread.sleep(2000);
@@ -1620,6 +1587,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		Actions mouseover=new Actions(dr);
 		Thread.sleep(3000); 
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		dr.findElement(By.xpath(".//*[text()='Users']")).click();
 		String expectedTextColor1="rgba(255, 255, 255, 1)";
 		String actualTextColor1 = dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).getCssValue("color");
@@ -1680,6 +1648,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//click on manage tab
 		WebElement manage= dr.findElement(By.xpath("//a[contains(text(),'Manage')]"));
 		clickElement(manage, "Manage Tab", "Manage Tab details", dr);
+		Thread.sleep(3000);
 		//click on user
 		WebElement users= dr.findElement(By.xpath("//a[contains(text(),'Users')]"));
 		clickElement(users, "Users Tab", "Users Tab under manage", dr);
@@ -1743,6 +1712,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		login(dr);
 		Thread.sleep(3000);
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		WebElement Queries = dr.findElement(By.xpath(".//*[text()='Queries']"));
 		clickElement(Queries,"Queries Tab", "Queries Tab", dr);
 		Thread.sleep(2000);
@@ -1757,6 +1727,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		Actions mouseover = new Actions(dr);
 		Thread.sleep(3000);
 		dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).click();
+		Thread.sleep(3000);
 		dr.findElement(By.xpath(".//*[text()='Queries']")).click();
 		String expectedTextColor1="rgba(255, 255, 255, 1)";
 		String actualTextColor1 = dr.findElement(By.xpath("//a[contains(text(),'Manage')]")).getCssValue("color");
@@ -1874,6 +1845,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 			{
 				checkObjectDisplay(status, "Status Dropdown", "Status Dropdown", dr); 
 			}
+			Thread.sleep(6000);
 			WebElement opt1=dr.findElement(By.xpath(".//*[@id='querystatus']/option[1]"));	
 			WebElement opt2=dr.findElement(By.xpath(".//*[@id='querystatus']/option[2]"));
 			WebElement opt3=dr.findElement(By.xpath(".//*[@id='querystatus']/option[3]"));
@@ -1929,6 +1901,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 
 
 
+
+
+
+
+
+
 	@AfterMethod
 	public void closeBrowser(){
 		updateResults();
@@ -1938,3 +1916,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 
 
 }
+
+
+
+
