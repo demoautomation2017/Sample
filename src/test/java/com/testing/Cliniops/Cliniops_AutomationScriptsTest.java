@@ -43,7 +43,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		dr.manage().window().maximize();
 	}
 	
-	@Test
+	@Test  
 	public void auto_Clini_Login_001() throws Exception{
 		dr.get("https://bridgetherapeutics.cliniops.com");
 		Actions tooltip = new Actions(dr);

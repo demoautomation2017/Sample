@@ -240,7 +240,7 @@ public class Cliniops_ReusableMethodsTest {
 
 	/**
 	 * Validate message displayed on the web page
-	 * @param obj
+	 * @param obj  
 	 * @param expectedText
 	 * @param objName
 	 * @param attributeName
