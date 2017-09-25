@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
     
-public class CliniopsSummaryReport {  
+public class CliniopsSummaryReport {
 
-	private static int numTests = 0;           
+	private static int numTests = 0;             
 	private static int numTestsPassed = 0;
 	private static int numTestsFailed = 0;  
 	private static LinkedHashMap<String, String> testResults = new LinkedHashMap<String, String>();
