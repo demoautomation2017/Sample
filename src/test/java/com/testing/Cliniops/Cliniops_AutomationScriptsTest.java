@@ -24,10 +24,10 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-  
+
 public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest{
 	WebDriver dr;
-	
+
 	@BeforeMethod    
 	@Parameters({"browser"})
 	public void selectBrowser(String browser)throws IOException{
@@ -42,7 +42,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		}
 		dr.manage().window().maximize();
 	}
-	
+
 	@Test  
 	public void auto_Clini_Login_001() throws Exception{
 		dr.get("https://bridgetherapeutics.cliniops.com");
@@ -98,32 +98,32 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 	@Test
 	public void auto_Clini_Login_002() throws IOException, InterruptedException{
 		dr.get("https://bridgetherapeutics.cliniops.com/login");
-		
+
 		//WebElement username=dr.findElement(By.id("username"));
 		WebElement username=Cliniops_ReusableMethodsTest.findTheElement("login_UsernameTextbox",Cliniops_DriverScriptTest.browserRunning,dr);
 		enterText(username, "Abhishek", "Username", "Enter username", dr);
-		
+
 		//WebElement password=dr.findElement(By.id("password"));
 		WebElement password=Cliniops_ReusableMethodsTest.findTheElement("login_PasswordTextbox",Cliniops_DriverScriptTest.browserRunning,dr);
-		enterText(password, "Testing@123", "Password", "Enter password", dr);
-		
+		enterText(password, "Welcome123#", "Password", "Enter password", dr);
+
 		//WebElement authenticate=dr.findElement(By.id("Authenticate"));
 		WebElement authenticate=Cliniops_ReusableMethodsTest.findTheElement("login_AuthenticateButton",Cliniops_DriverScriptTest.browserRunning,dr);
 		clickElement(authenticate, "Authenticate Button", "Click on authenticate", dr);
-		
+
 		//WebElement selectStudy= dr.findElement(By.id("investigator_study"));
 		WebElement selectStudy=Cliniops_ReusableMethodsTest.findTheElement("login_SelectStudyDd",Cliniops_DriverScriptTest.browserRunning,dr);
 		checkEnabled(selectStudy,"selectStudy",dr);
-		
+
 		//WebElement selectLang= dr.findElement(By.id("lang_type"));
 		WebElement selectLang=Cliniops_ReusableMethodsTest.findTheElement("login_SelectLangDd",Cliniops_DriverScriptTest.browserRunning,dr);
 		checkEnabled(selectLang,"selectLang",dr);
-		
+
 		//WebElement login=dr.findElement(By.xpath("//*[@title='Login']"));
 		WebElement login=Cliniops_ReusableMethodsTest.findTheElement("login_LoginBtn",Cliniops_DriverScriptTest.browserRunning,dr);
 		checkEnabled(login,"login",dr);  
 		Thread.sleep(2000);
-		
+
 		clickElement(selectStudy, "selectStudy","selectStudy",dr);
 		//WebElement selectStudyOption=dr.findElement(By.xpath("//*[text()='Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer']"));
 		WebElement selectStudyOption=Cliniops_ReusableMethodsTest.findTheElement("login_SelectStudyOpt1",Cliniops_DriverScriptTest.browserRunning,dr);
@@ -160,7 +160,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//validating Authentication error message
 		String expected = "Authenitcation failed !";
 		dr.get("https://bridgetherapeutics.cliniops.com");
-		
+
 		//WebElement userNameObj = dr.findElement(By.xpath(".//*[@id='username']"));
 		WebElement userNameObj=Cliniops_ReusableMethodsTest.findTheElement("login_UsernameTextbox",Cliniops_DriverScriptTest.browserRunning,dr);
 		enterText(userNameObj, "Abhi", "userName object","Enter Username",dr);
@@ -232,7 +232,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//WebElement authenticateObj1 = dr.findElement(By.id("Authenticate"));
 		WebElement authenticateObj1=Cliniops_ReusableMethodsTest.findTheElement("login_AuthenticateButton",Cliniops_DriverScriptTest.browserRunning,dr);
 		clickElement(authenticateObj1, "Authentication button object","Click Authenticate",dr);
-		
+
 		String expUserNameErrMsg = "Please enter the username";
 		String expPassWordErrMsg = "Please enter the password";
 
@@ -294,13 +294,13 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//WebElement requestNewPwd2=dr.findElement(By.id("req_new_pass"));
 		WebElement requestNewPwd2=Cliniops_ReusableMethodsTest.findTheElement("login_RequestPwdButton",Cliniops_DriverScriptTest.browserRunning,dr);
 		clickElement(requestNewPwd2, "Click Request Password", "Request new password",dr);
-		
+
 		//WebElement emailIdError2=dr.findElement(By.xpath(".//*[@id='content-body']/div[1]/span"));
 		WebElement emailIdError2=Cliniops_ReusableMethodsTest.findTheElement("login_EmailSendMsg",Cliniops_DriverScriptTest.browserRunning,dr);
 		errorMsg=emailIdError2.getText();
 		expectedErrorMsg="Email has been sent to your email address. Please check to create your new password.";
 		validateText(emailIdError2, expectedErrorMsg, errorMsg,"Email error",dr);
-		
+
 	}
 	@Test
 	public void auto_Clini_Login_005() throws Exception{
@@ -1004,7 +1004,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#4
 		WebElement trialArmsDD = dr.findElement(By.xpath(".//*[@id='edit_cs_trialarms']"));
 		checkDropdownDEnableSelectedOpt(trialArmsDD, "Write", "Disabled","verify Write is present in the trailArms dropdown textbox", dr);
-    	//#5
+		//#5
 		WebElement itemsDD = dr.findElement(By.xpath(".//*[@id='edit_cs_variable']"));
 		checkDropdownDEnableSelectedOpt(itemsDD, "Write", "Disabled", "verify Write is present in the items dropdown textbox", dr);
 		//#6
@@ -1024,16 +1024,16 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		checkDropdownDEnableSelectedOpt(lock, "Write", "Disabled", "verify Write is present in the lock dropdown textbox", dr);
 		//#11
 		Thread.sleep(2000);
-		
-		
+
+
 		//WebDriverWait wait = new WebDriverWait(dr, 30);
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='edit_ms_users']")));
 		//jse.executeScript("window.scrollBy(0,500)");
 		WebElement users = dr.findElement(By.xpath(".//*[@id='edit_ms_users']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", users);
 		checkDropdownDEnableSelectedOpt(users, "Write", "Disabled", "verify Write is present in the users dropdown textbox", dr);
-		
-		
+
+
 		//#12
 		WebElement export_reports = dr.findElement(By.xpath(".//*[@id='edit_ms_export-reports']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", export_reports);
@@ -1059,9 +1059,9 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		checkDropdownDEnableSelectedOpt(quries, "None", "Disabled", "verify Write is present in the queries dropdown textbox", dr);
 		//#18
 		WebElement formReview = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
-    	checkDropdownDEnableSelectedOpt(formReview, "None", "Disabled", "verify Write is present in the formReview dropdown textbox", dr);
+		checkDropdownDEnableSelectedOpt(formReview, "None", "Disabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
-    	Thread.sleep(6000);
+		Thread.sleep(6000);
 		WebElement unlock_subject_site = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site, "None", "Disabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
@@ -1096,7 +1096,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//clicking study administrator view record
 		System.out.println("clicking on study administrator view record......");
 		System.out.println("--------------------------------------------------");
-    	WebElement study_administrator_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[2]/div/a/img"));
+		WebElement study_administrator_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[2]/div/a/img"));
 		//	   WebDriverWait wait = new WebDriverWait(dr, 30);
 		//	   wait.until(ExpectedConditions.elementToBeClickable(study_administrator_obj)).click();
 		clickElement(study_administrator_obj, "study_administrator object", "study admin edit role icon", dr);
@@ -1108,7 +1108,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		String expectedRoleName2 = "Study Administrator";
 		checkContentsMatch(actualRoleName2,expectedRoleName2,"RoleName","Role Name Text Validation",dr);
 		System.out.println("text for Study Administrator is validated....");
-    	//#2
+		//#2
 		WebElement studydetails1 = dr.findElement(By.xpath(".//*[@id='edit_cs_studydetails']"));
 		Thread.sleep(3000);
 		checkDropdownDEnableSelectedOpt(studydetails1, "Write", "Disabled", "verify Write is present in the Study details textbox", dr);
@@ -1138,9 +1138,9 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		checkDropdownDEnableSelectedOpt(lock1, "Write", "Disabled", "verify Write is present in the lock dropdown textbox", dr);
 		//#11
 		Thread.sleep(3000);
-	    WebElement user1 = dr.findElement(By.xpath(".//*[@id='edit_ms_users']"));
-	    ((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", user1);
-	    checkDropdownDEnableSelectedOpt(user1, "Write", "Disabled", "verify Write is present in the users dropdown textbox", dr);
+		WebElement user1 = dr.findElement(By.xpath(".//*[@id='edit_ms_users']"));
+		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", user1);
+		checkDropdownDEnableSelectedOpt(user1, "Write", "Disabled", "verify Write is present in the users dropdown textbox", dr);
 		//#12
 		WebElement export_reports1 = dr.findElement(By.xpath(".//*[@id='edit_ms_export-reports']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", export_reports1);
@@ -1169,10 +1169,10 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		checkDropdownDEnableSelectedOpt(formReview1, "Write", "Disabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
 		Thread.sleep(6000);
-	WebElement unlock_subject_site1 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
+		WebElement unlock_subject_site1 = dr.findElement(By.xpath(".//*[@id='edit_unlock_subject']"));
 		((JavascriptExecutor) dr).executeScript("arguments[0].scrollIntoView(true);", unlock_subject_site1);
 		checkDropdownDEnableSelectedOpt(unlock_subject_site1, "Write", "Disabled", "verify Write is present in the unlock_subject_site dropdown textbox", dr);
-			//#20
+		//#20
 		Thread.sleep(6000);
 		WebElement siteLock1 = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
 		checkDropdownDEnableSelectedOpt(siteLock1, "None", "Disabled", "verify Write is present in the site_lock dropdown textbox", dr);
@@ -1235,7 +1235,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#8
 		WebElement visits2 = dr.findElement(By.xpath(".//*[@id='edit_cs_visits']"));
 		checkDropdownDEnableSelectedOpt(visits2, "Write", "Enabled", "verify Write is present in the visits dropdown textbox", dr);
-    	//#9
+		//#9
 		WebElement fileRepository2 = dr.findElement(By.xpath(".//*[@id='edit_cs_filerepository']"));
 		checkDropdownDEnableSelectedOpt(fileRepository2, "Write", "Enabled", "verify Write is present in the fileRepsitory dropdown textbox", dr);
 		//#10
@@ -1266,7 +1266,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#16
 		WebElement role2 = dr.findElement(By.xpath(".//*[@id='edit_ms_roles']"));
 		checkDropdownDEnableSelectedOpt(role2, "Write", "Enabled", "verify Write is present in the role dropdown textbox", dr);
-    	//#17
+		//#17
 		WebElement quries2 = dr.findElement(By.xpath(".//*[@id='edit_ms_queries']"));
 		checkDropdownDEnableSelectedOpt(quries2, "Write", "Enabled", "verify Write is present in the queries dropdown textbox", dr);
 		//#18
@@ -1313,11 +1313,12 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#27
 		clickElement(cancel_button2, "cancel button object", "click on cancel button", dr);
 		System.out.println("clicking on data manager delete icon.............");
+		Thread.sleep(3000);
 		System.out.println("------------------------------------------------");
 		WebElement datamanager_deleteRecord_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[2]/div/a[2]/img"));
 		Thread.sleep(3000);
 		clickElement(datamanager_deleteRecord_obj, "data manager delete record object", "clicked on delete record icon ", dr);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		WebElement cancel3 = dr.findElement(By.xpath("html/body/div[4]/div[3]/div/button[2]"));
 
 		if(cancel3.isDisplayed())
@@ -1359,14 +1360,14 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#6
 		WebElement items_group_Obj3 = dr.findElement(By.xpath(".//*[@id='edit_cs_itemgroup']"));
 		checkDropdownDEnableSelectedOpt(items_group_Obj3, "None", "Enabled", "verify Write is present in the items_group dropdown textbox", dr);
-    	//#7
+		//#7
 		WebElement forms3DD = dr.findElement(By.xpath(".//*[@id='edit_cs_forms']"));
 		checkDropdownDEnableSelectedOpt(forms3DD, "Write", "Enabled", "verify Write is present in the forms dropdown textbox", dr);
 		//#8
 		WebElement visits3 = dr.findElement(By.xpath(".//*[@id='edit_cs_visits']"));
 		checkDropdownDEnableSelectedOpt(visits3, "None", "Enabled", "verify Write is present in the visits dropdown textbox", dr);
 		//#9
-    	WebElement fileRepository3 = dr.findElement(By.xpath(".//*[@id='edit_cs_filerepository']"));
+		WebElement fileRepository3 = dr.findElement(By.xpath(".//*[@id='edit_cs_filerepository']"));
 		checkDropdownDEnableSelectedOpt(fileRepository3, "None", "Enabled", "verify Write is present in the fileRepsitory dropdown textbox", dr);
 		//#10
 		WebElement locks3 = dr.findElement(By.xpath(".//*[@id='edit_cs_lock']"));
@@ -1400,7 +1401,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement quries3 = dr.findElement(By.xpath(".//*[@id='edit_ms_queries']"));
 		checkDropdownDEnableSelectedOpt(quries3, "None", "Enabled", "verify Write is present in the queries dropdown textbox", dr);
 		//#18
-    	WebElement formReview3 = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
+		WebElement formReview3 = dr.findElement(By.xpath(".//*[@id='edit_form_review']"));
 		checkDropdownDEnableSelectedOpt(formReview3, "None", "Enabled", "verify Write is present in the formReview dropdown textbox", dr);
 		//#19
 		Thread.sleep(6000);
@@ -1410,9 +1411,9 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//#20
 		Thread.sleep(6000);
 		WebElement siteLock3 = dr.findElement(By.xpath(".//*[@id='edit_site_lock']"));
-    	checkDropdownDEnableSelectedOpt(siteLock3, "None", "Enabled", "verify Write is present in the site_lock dropdown textbox", dr);
+		checkDropdownDEnableSelectedOpt(siteLock3, "None", "Enabled", "verify Write is present in the site_lock dropdown textbox", dr);
 		//#21
-    	WebElement registerSubjects3 = dr.findElement(By.xpath(".//*[@id='edit_ipad_registersubjects']"));
+		WebElement registerSubjects3 = dr.findElement(By.xpath(".//*[@id='edit_ipad_registersubjects']"));
 		checkDropdownDEnableSelectedOpt(registerSubjects3, "Write", "Enabled", "verify Write is present in the register subjects dropdown textbox", dr);
 		//#22
 		WebElement consent_visit3 = dr.findElement(By.xpath(".//*[@id='edit_ipad_consentvisit']"));
@@ -1428,7 +1429,7 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		WebElement subjectIdentifier3 = dr.findElement(By.xpath(".//*[@id='edit_vs_identifier']"));
 		checkDropdownDEnableSelectedOpt(subjectIdentifier3, "Write", "Enabled", "verify Write is present in the subject identifier dropdown textbox", dr);
 		//#26
-    	WebElement formVerification3 = dr.findElement(By.xpath(".//*[@id='edit_form_verify']"));
+		WebElement formVerification3 = dr.findElement(By.xpath(".//*[@id='edit_form_verify']"));
 		checkDropdownDEnableSelectedOpt(formVerification3, "Write", "Enabled", "verify Write is present in the formVerification dropdown textbox", dr);
 		WebElement update_obj3 = dr.findElement(By.xpath(".//*[@id='edit_inv_role_submit']"));
 		if(update_obj3.isDisplayed())
@@ -1442,14 +1443,15 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		}
 		//#27
 		clickElement(cancel_button3, "cancel button object", "click on cancel button", dr);
+		Thread.sleep(3000);
 		System.out.println("clicking on site co-ordinator delete icon.............");
 		System.out.println("-------------------------------------------------------");
 		WebElement site_co_deleteIcon_obj = dr.findElement(By.xpath(".//*[@id='content-body']/div/div/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[2]/div/a[2]/img"));
-    	Thread.sleep(3000);
+		Thread.sleep(3000);
 		clickElement(site_co_deleteIcon_obj, "site_co_ord_delete icon object", "clicking on site coOrdinator  delete icon", dr);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		WebElement cancel4 = dr.findElement(By.xpath("html/body/div[4]/div[3]/div/button[2]"));
-    	if(cancel4.isDisplayed())
+		if(cancel4.isDisplayed())
 		{
 			System.out.println("cancel button is present in the delete role icon window for site co-ordinator......");
 		}
@@ -1890,12 +1892,91 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 			String expectedTextassignTo ="Assigned To";
 			System.out.println(actualTextassignTo);
 			checkContentsMatch(actualTextassignTo,expectedTextassignTo," assigned To ","assigned To",dr);
-						Thread.sleep(3000);
+			Thread.sleep(3000);
 		}
 
 	}
 
+	@Test
 
+	public void auto_Clini_Analyze_005() throws InterruptedException,IOException{
+		login(dr);
+		Thread.sleep(5000);
+		WebElement analyze=dr.findElement(By.xpath(".//*[@id='nav']/ul/li[4]/a"));
+		clickElement(analyze, "Analyze Tab", "Click on Analyze tab", dr);
+		Thread.sleep(4000);
+		WebElement selectExport=dr.findElement(By.id("exporttype"));
+		if(selectExport.isDisplayed()){
+			Select select=new Select(selectExport);
+			select.selectByIndex(1);
+			updateReport("Pass", "Select Export","\"CDISC ODM Export\" is selected",dr);
+		}
+		else{
+			updateReport("Fail", "Select Export", "\"CDISC ODM Export\" is not selected",dr);
+		}
+		Thread.sleep(3000);
+		WebElement fileType=dr.findElement(By.xpath(".//select[@id='file_type']"));
+		checkObjectDisplay(fileType,"File Type Dropdown","File Type Dropdown",dr);
+		WebElement exportFormat=dr.findElement(By.xpath(".//*[@id='export_format']"));
+		checkObjectDisplay(exportFormat,"Export Format Dropdown","Export Format Dropdown",dr);
+		WebElement granularityCheckBoxes=dr.findElement(By.xpath(".//*[@id='odmexportform']/div/fieldset[3]/div"));
+		readingText(granularityCheckBoxes,"granularityCheckBoxes",dr);
+		WebElement metaDataCheckbox=dr.findElement(By.xpath(".//*[@id='metadata']"));
+		readingCheckbox(metaDataCheckbox,"Metadata Checkbox",dr);
+		WebElement adminDataCheckbox=dr.findElement(By.xpath(".//*[@id='admindata']"));
+		readingCheckbox(adminDataCheckbox,"Admin Data Checkbox",dr);
+		WebElement clinicalData=dr.findElement(By.xpath(".//*[@id='clinicaldata']"));
+		readingCheckbox(clinicalData,"Clinical Data Checkbox",dr);
+		WebElement exportButton=dr.findElement(By.xpath(".//*[@id='exportodm'][@type='submit']"));
+		checkObjectDisplay(exportButton,"Export Button","Export button",dr);
+		//check for "Export Format" dropdown default option
+		Thread.sleep(5000);
+		//WebElement exportFormatOption=(WebElement) js.executeScript("return document.getElementByXpath('.//*[@id='export_format']/option[1]');");
+		WebElement exportFormatOption= dr.findElement(By.xpath("//fieldset[2]/div/select/option[1]"));
+		String exportFormatDefaultOption=exportFormatOption.getCssValue("color");
+		String expectedExportFormatDefaultOption="rgba(255, 255, 255, 1)";
+		if(exportFormatDefaultOption.trim().equals(expectedExportFormatDefaultOption))
+		{	updateReport("Pass", "ExportFormat Dropdown Default Option",exportFormatOption.getText()+" appeared in the dropdown field by default",dr);}
+		else{updateReport("Fail", "ExportFormat Dropdown Default Option",exportFormatOption.getText()+" is not appeared in the dropdown field by default",dr);}
+		Thread.sleep(5000);
+		//check for filetype drop down default value
+		WebElement fileTypeOption= dr.findElement(By.xpath(".//*[@id='file_type']/option[1]"));
+		String fileTypeDefaultOption=exportFormatOption.getCssValue("color");
+		String expectedFileTypeDefaultOption="rgba(255, 255, 255, 1)";
+		if(fileTypeDefaultOption.trim().equals(expectedFileTypeDefaultOption))
+		{	updateReport("Pass", "File Type Dropdown Default Option",fileTypeOption.getText()+" appeared in the dropdown field by default",dr);}
+		else{updateReport("Fail", "File Type Dropdown Default Option",fileTypeOption.getText()+" is not appeared in the dropdown field by default",dr);}
+		Thread.sleep(2000);
+		//check for all the drop down values for filetype dropdown field
+		clickElement(fileType, "fileType dropdown", "Click on fileType", dr);
+		if(fileType.getText().contains("Select File Type") & fileType.getText().contains("Snapshot") & fileType.getText().contains("Transactional"))
+		{updateReport("Pass", "File Type Dropdown Options","Select File type,Snapshot and Transactional options are visible in the dropdown list",dr);}
+		else{updateReport("Fail", "File Type Dropdown Options","Select File type,Snapshot and Transactional options are not visible in the dropdown list",dr);}
+		//verify the selection of snapshot option for the filetype drop down
+		WebElement fileTypeOption2=dr.findElement(By.xpath(".//*[@id='file_type']/option[2]"));
+		clickElement(fileTypeOption2, "file Type Option : Snapshot", "Click on file Type Option", dr);
+		String fileTypeSelectedOption=fileTypeOption2.getCssValue("color");
+		String expectedfileTypeSelectedOption="rgba(255, 255, 255, 1)";
+		if(fileTypeSelectedOption.trim().equals(expectedfileTypeSelectedOption))
+		{	updateReport("Pass", "File Type Dropdown Default Option",fileTypeOption2.getText()+" option gets selected and appears in the \"Select File Type\" dropdown field",dr);}
+		else{updateReport("Fail", "File Type Dropdown Default Option",fileTypeOption2.getText()+" option not selected in the \"Select File Type\" dropdown field",dr);}
+		//check for the Exportformat" drop down values.
+		clickElement(exportFormat, "exportFormat dropdown", "Click on exportFormat", dr);
+		if(exportFormat.getText().contains("CliniTrial ODM v1.3") & exportFormat.getText().contains("Rave ODM v1.3"))
+		{updateReport("Pass", "Export Format Dropdown Options","CliniTrial ODM v 1.3 & Rave ODM v 1.3 are options visible in the dropdown list",dr);}
+		else{updateReport("Fail", "File Type Dropdown Options","CliniTrial ODM v 1.3 & Rave ODM v 1.3 are options not visible in the dropdown list",dr);}
+		//uncheck the clinicaldata checkbox
+		WebElement clinicalDataCheckbox=dr.findElement(By.xpath(".//*[@id='clinicaldata']"));
+		clickElement(clinicalDataCheckbox, "Uncheck Clinical Data Checkbox", "Uncheck Clinical Data  Checkbox", dr);
+		Thread.sleep(2000);
+		//verify export button tooltip and enabled
+		Actions tooltip = new Actions(dr);
+		tooltip.moveToElement(exportButton).build().perform();
+		validateTextAttribute(exportButton, "Export", "Export tooltip", "title","Export Tooltip",dr);
+		checkEnabled(exportButton,"Export Button",dr); 
+
+
+	}
 
 
 

@@ -111,10 +111,10 @@ public class Cliniops_ReusableMethodsTest {
 		Select select = new Select(dd);
 		if(dd.isDisplayed()){
 			select.selectByIndex(index);
-			updateReport("Pass", "DropDown", "selected dd object by using index",dr);
+			updateReport("Pass", "DropDown", "Selected object by using index",dr);
 		}
 		else{
-			updateReport("Fail", "DropDown", "Not selected dd object by using index",dr);
+			updateReport("Fail", "DropDown", "Object is not selected by using index",dr);
 		}
 	}
 
@@ -200,11 +200,11 @@ public class Cliniops_ReusableMethodsTest {
 	 * @param dr
 	 * @throws IOException
 	 */
-	public static void readingCheckbox(WebElement obj,String expectedText,String objName,WebDriver dr) throws IOException{
+	public static void readingCheckbox(WebElement obj,String objName,WebDriver dr) throws IOException{
 		if(obj.isDisplayed())
 		{
 			String Actualtext=obj.getAttribute("checked").trim();
-			if(expectedText.equals(Actualtext)){
+			if(Actualtext.equals("true")){
 				updateReport("Pass","readingCheckbox",objName+" is checked",dr);
 			}
 			else{
@@ -232,7 +232,7 @@ public class Cliniops_ReusableMethodsTest {
 				updateReport("Fail","ReadingText",objName+" has No data",dr);
 			}
 			else{
-				updateReport("Pass","ReadingText",objName+" contains "+Actualtext,dr);
+				updateReport("Pass","ReadingText",objName+" contains :"+Actualtext,dr);
 			}
 		}
 	}
@@ -604,8 +604,8 @@ public class Cliniops_ReusableMethodsTest {
 		//dr.findElement(By.id("username")).sendKeys("Abhishek");
 		Cliniops_ReusableMethodsTest.findTheElement("login_UsernameTextbox",Cliniops_DriverScriptTest.browserRunning,dr).sendKeys("Abhishek");
 		Thread.sleep(2000);
-		//dr.findElement(By.id("password")).sendKeys("Testing@123");
-		Cliniops_ReusableMethodsTest.findTheElement("login_PasswordTextbox",Cliniops_DriverScriptTest.browserRunning,dr).sendKeys("Testing@123");
+		//dr.findElement(By.id("password")).sendKeys("Welcome123#");
+		Cliniops_ReusableMethodsTest.findTheElement("login_PasswordTextbox",Cliniops_DriverScriptTest.browserRunning,dr).sendKeys("Welcome123#");
 		Thread.sleep(2000);
 		//dr.findElement(By.id("Authenticate")).click();
 		Cliniops_ReusableMethodsTest.findTheElement("login_AuthenticateButton",Cliniops_DriverScriptTest.browserRunning,dr).click();
@@ -614,7 +614,7 @@ public class Cliniops_ReusableMethodsTest {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer']")));
 		//dr.findElement(By.xpath("//*[text()='Cisplatin/Etoposide/Rad................-Small Cell Lung Cancer']")).click();
 		Cliniops_ReusableMethodsTest.findTheElement("login_SelectStudyOpt1",Cliniops_DriverScriptTest.browserRunning,dr).click();
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		//dr.findElement(By.xpath("//*[text()='English']")).click();
 		Cliniops_ReusableMethodsTest.findTheElement("login_SelecctLangOpt1",Cliniops_DriverScriptTest.browserRunning,dr).click();
 		//dr.findElement(By.xpath(".//*[@id='login']/div[7]/input")).click();

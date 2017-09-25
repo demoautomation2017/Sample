@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
   
 public class Cliniops_DriverScriptTest {           
    
-	//static int x;
+	//static int x;  
 	static ArrayList elementList=new ArrayList();
 	static String[][] locatorsData;
 	static String browserRunning;
