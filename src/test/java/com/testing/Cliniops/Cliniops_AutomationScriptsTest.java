@@ -17,6 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -1896,12 +1897,111 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		}
 
 	}
+	
+	@Test
 
+	 public void auto_Clini_Analyze_004() throws InterruptedException, IOException
+
+	 { login(dr);
+	 Actions action = new Actions(dr);
+	 Thread.sleep(5000);
+	 WebElement analyze=dr.findElement(By.xpath("//a[contains(text(),'Analyze')]"));
+	 clickElement(analyze, "Analyze Tab", "Click on Analyze tab", dr);
+	 //it will verify the dropdown's are enabled
+		WebElement selectExport=dr.findElement(By.id("exporttype"));
+		if(selectExport.isDisplayed()){
+			Select select=new Select(selectExport);
+			select.selectByIndex(0);
+			updateReport("Pass", "Select Export","\"Excel Export\" is selected",dr);
+		}
+		else{
+			updateReport("Fail", "Select Export", "\"Excel Export\" is not selected",dr);
+		}
+	 
+	 String expectedPopulation="Population";
+	 String actualPopulation = dr.findElement(By.xpath("//*[@id='subjectdataform']/div/h2[1]")).getText();
+	 checkContentsMatch(actualPopulation,expectedPopulation,"Population is Displayed","Population panel",dr);
+	 String expectedData="Data";
+	 String actualData = dr.findElement(By.xpath("//*[@id='subjectdataform']/div/h2[2]")).getText();
+	 checkContentsMatch(actualData,expectedData,"Data is Displayed","Data panel",dr);
+	 WebElement selectAllSites= dr.findElement(By.xpath("//*[@id='site']/option[2]"));
+	 boolean selAllSites=selectAllSites.isEnabled();
+	 Assert.assertEquals(selAllSites,true,"All Sites is enabled");
+	 Thread.sleep(2000);
+	 clickElement(selectAllSites, "All Sites Option", "All Sites Option", dr);
+	 String expectedAllSites="All Sites";
+	 String actualAllSites = dr.findElement(By.xpath("//*[@id='site']/option[2]")).getText();
+	 System.out.println("Actual All Sites:"+actualAllSites);
+     checkContentsMatch(actualAllSites,expectedAllSites,"All Sites is selected","All Sites",dr);
+	 Thread.sleep(2000);
+	 //Groups
+	 WebElement selectAllGroups= dr.findElement(By.xpath("//*[@id='groups']/option[2]"));
+	 boolean selAllGroups=selectAllGroups.isEnabled();
+	 Assert.assertEquals(selAllGroups,true,"All Groups is enabled");
+	 Thread.sleep(2000);
+	 clickElement(selectAllGroups, "All Groups Option", "All Groups Option", dr);
+	 String expectedAllGroups="All Groups";
+	 String actualAllGroups = dr.findElement(By.xpath("//*[@id='groups']/option[2]")).getText();
+	 System.out.println("Actual All Groups:"+actualAllGroups);
+	 checkContentsMatch(actualAllGroups,expectedAllGroups,"All Groups is selected","All Groups",dr);
+	 Thread.sleep(2000);
+	 //Form status
+	 WebElement selectAllStatus= dr.findElement(By.xpath("//*[@id='sub_statuses']/option[2]"));
+	 boolean selAllStatus=selectAllStatus.isEnabled();
+	 Assert.assertEquals(selAllSites,true,"All Status is enabled");
+	 Thread.sleep(2000);
+	 clickElement(selectAllStatus, "All Status Option", "All Status Option", dr);
+	 String expectedAllStatus="All Status";
+	 String actualAllStatus = dr.findElement(By.xpath("//*[@id='sub_statuses']/option[2]")).getText();
+	 System.out.println("Actual All Status:"+actualAllStatus);
+	 checkContentsMatch(actualAllStatus,expectedAllStatus,"All Status is selected","All Status",dr);
+	 Thread.sleep(2000);
+	 //Visits
+	 WebElement selectAllVisits= dr.findElement(By.xpath("//*[@id='visit']/option[2]"));
+	 boolean selAllVisits=selectAllVisits.isEnabled();
+	 Assert.assertEquals(selAllVisits,true,"All Visits is enabled");
+	 Thread.sleep(2000);
+	 clickElement(selectAllVisits, "All Visits Option", "All Visits Option", dr);
+	 String expectedAllVisits="All Visits";
+	 String actualAllVisits = dr.findElement(By.xpath("//*[@id='visit']/option[2]")).getText();
+	 System.out.println("Actual All Visits:"+actualAllVisits);
+	 checkContentsMatch(actualAllVisits,expectedAllVisits,"All Visits is selected","All Visits",dr);
+	 Thread.sleep(2000);
+	 //Data Forms
+	 WebElement selectAllForms= dr.findElement(By.xpath("//*[@id='subform']/option[2]"));
+	 boolean selAllForms=selectAllForms.isEnabled();
+	 Assert.assertEquals(selAllForms,true,"All Forms is enabled");
+     Thread.sleep(2000);
+     clickElement(selectAllForms, "All Forms Option", "All Forms Option", dr);
+	 String expectedAllForms="All Forms";
+	 String actualAllForms = dr.findElement(By.xpath("//*[@id='subform']/option[2]")).getText();
+	 System.out.println("Actual All Forms:"+actualAllForms);
+	 checkContentsMatch(actualAllSites,expectedAllSites,"All Forms is selected","All Forms",dr);
+	 Thread.sleep(2000);
+	 //Data ItemGroups
+	 WebElement selectAllItemGroup= dr.findElement(By.xpath("//*[@id='form_variables']/option[2]"));
+	 boolean selAllItemGroup=selectAllItemGroup.isEnabled();
+	 Assert.assertEquals(selAllItemGroup,true,"All Item Group is enabled");
+	 Thread.sleep(2000);
+	 clickElement(selectAllItemGroup, "All ItemGroup Option", "All ItemGroup Option", dr);
+	 String expectedAllItemGroup="All Item-Groups";
+	 String actualAllItemGroup = dr.findElement(By.xpath("//*[@id='form_variables']/option[2]")).getText();
+	 System.out.println("Actual All Item Group:"+actualAllItemGroup);
+	 checkContentsMatch(actualAllItemGroup,expectedAllItemGroup,"All Item Group is selected","All Item Group",dr);
+	 Thread.sleep(2000);
+ }
+
+
+
+	/**
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	@Test
 
 	public void auto_Clini_Analyze_005() throws InterruptedException,IOException{
 		login(dr);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		WebElement analyze=dr.findElement(By.xpath(".//*[@id='nav']/ul/li[4]/a"));
 		clickElement(analyze, "Analyze Tab", "Click on Analyze tab", dr);
 		Thread.sleep(4000);
@@ -1931,22 +2031,15 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		checkObjectDisplay(exportButton,"Export Button","Export button",dr);
 		//check for "Export Format" dropdown default option
 		Thread.sleep(5000);
-		//WebElement exportFormatOption=(WebElement) js.executeScript("return document.getElementByXpath('.//*[@id='export_format']/option[1]');");
-		WebElement exportFormatOption= dr.findElement(By.xpath("//fieldset[2]/div/select/option[1]"));
-		String exportFormatDefaultOption=exportFormatOption.getCssValue("color");
-		String expectedExportFormatDefaultOption="rgba(255, 255, 255, 1)";
-		if(exportFormatDefaultOption.trim().equals(expectedExportFormatDefaultOption))
-		{	updateReport("Pass", "ExportFormat Dropdown Default Option",exportFormatOption.getText()+" appeared in the dropdown field by default",dr);}
-		else{updateReport("Fail", "ExportFormat Dropdown Default Option",exportFormatOption.getText()+" is not appeared in the dropdown field by default",dr);}
-		Thread.sleep(5000);
+		WebElement exportFormatDefaultOption=dr.findElement(By.xpath(".//*[@id='export_format']"));
+		Select sel1=new Select(exportFormatDefaultOption);
+		WebElement actualExportFormatDefaultOption=sel1.getFirstSelectedOption();
+		validateText(actualExportFormatDefaultOption, "CliniTrial ODM v1.3","ExportFormat Default Option","ExportFormat Default Option",dr);
 		//check for filetype drop down default value
-		WebElement fileTypeOption= dr.findElement(By.xpath(".//*[@id='file_type']/option[1]"));
-		String fileTypeDefaultOption=exportFormatOption.getCssValue("color");
-		String expectedFileTypeDefaultOption="rgba(255, 255, 255, 1)";
-		if(fileTypeDefaultOption.trim().equals(expectedFileTypeDefaultOption))
-		{	updateReport("Pass", "File Type Dropdown Default Option",fileTypeOption.getText()+" appeared in the dropdown field by default",dr);}
-		else{updateReport("Fail", "File Type Dropdown Default Option",fileTypeOption.getText()+" is not appeared in the dropdown field by default",dr);}
-		Thread.sleep(2000);
+		WebElement fileTypeDefaultOption=dr.findElement(By.xpath(".//*[@id='file_type']"));
+		Select sel2=new Select(fileTypeDefaultOption);
+		WebElement actualFileTypeDefaultOption=sel2.getFirstSelectedOption();
+		validateText(actualFileTypeDefaultOption, "Select File Type","FileType Default Option","FileType Default Option",dr);
 		//check for all the drop down values for filetype dropdown field
 		clickElement(fileType, "fileType dropdown", "Click on fileType", dr);
 		if(fileType.getText().contains("Select File Type") & fileType.getText().contains("Snapshot") & fileType.getText().contains("Transactional"))
@@ -1955,11 +2048,8 @@ public class Cliniops_AutomationScriptsTest extends Cliniops_ReusableMethodsTest
 		//verify the selection of snapshot option for the filetype drop down
 		WebElement fileTypeOption2=dr.findElement(By.xpath(".//*[@id='file_type']/option[2]"));
 		clickElement(fileTypeOption2, "file Type Option : Snapshot", "Click on file Type Option", dr);
-		String fileTypeSelectedOption=fileTypeOption2.getCssValue("color");
-		String expectedfileTypeSelectedOption="rgba(255, 255, 255, 1)";
-		if(fileTypeSelectedOption.trim().equals(expectedfileTypeSelectedOption))
-		{	updateReport("Pass", "File Type Dropdown Default Option",fileTypeOption2.getText()+" option gets selected and appears in the \"Select File Type\" dropdown field",dr);}
-		else{updateReport("Fail", "File Type Dropdown Default Option",fileTypeOption2.getText()+" option not selected in the \"Select File Type\" dropdown field",dr);}
+		WebElement snapShotOption=sel2.getFirstSelectedOption();
+		validateText(snapShotOption, "Snapshot","SnapShot Option","SnapShot Option",dr);
 		//check for the Exportformat" drop down values.
 		clickElement(exportFormat, "exportFormat dropdown", "Click on exportFormat", dr);
 		if(exportFormat.getText().contains("CliniTrial ODM v1.3") & exportFormat.getText().contains("Rave ODM v1.3"))

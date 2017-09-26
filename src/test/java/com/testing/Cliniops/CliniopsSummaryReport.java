@@ -12,7 +12,7 @@ import java.util.Map;
     
 public class CliniopsSummaryReport {
 
-	private static int numTests = 0;             
+	private static int numTests = 0;           
 	private static int numTestsPassed = 0;
 	private static int numTestsFailed = 0;  
 	private static LinkedHashMap<String, String> testResults = new LinkedHashMap<String, String>();
@@ -27,7 +27,7 @@ public class CliniopsSummaryReport {
 		return (getExecutionEndTime() - getExecutionStartTime())/1000 ;
 	}
 	
-	/**
+	/**  
 	 * Returns test execution end time
 	 * @return
 	 */

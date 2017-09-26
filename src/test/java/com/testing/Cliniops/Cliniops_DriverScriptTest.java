@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
   
 public class Cliniops_DriverScriptTest {           
    
-	//static int x;      
+	//static int x;
 	static ArrayList elementList=new ArrayList();
 	static String[][] locatorsData;
 	static String browserRunning;
@@ -21,7 +21,7 @@ public class Cliniops_DriverScriptTest {
 		String testDataSheet="Sheet1";
 		locatorsData = Cliniops_ReusableMethodsTest.readSheet(locatorsPath, testDataSheet);
 		
-		for(int i=0;i<locatorsData.length;i++){
+		for(int i=0;i<locatorsData.length;i++){  
 			elementList.add(locatorsData[i][0]);
 		}
 		System.out.println(elementList);
