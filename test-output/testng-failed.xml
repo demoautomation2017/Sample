@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.testing.Cliniops.Cliniops_DriverScriptTest">
+      <class name="com.testing.OANDA.OANDA_DriverScriptTest">
         <methods>
-          <include name="cliniopsDriver"/>
+          <include name="Runner"/>
           <include name="beforeSuiteExecution"/>
         </methods>
-      </class> <!-- com.testing.Cliniops.Cliniops_DriverScriptTest -->
+      </class> <!-- com.testing.OANDA.OANDA_DriverScriptTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
