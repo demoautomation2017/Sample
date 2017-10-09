@@ -12,7 +12,7 @@ import java.util.Map;
     
 public class SummaryReport {
 
-	private static int numTests = 0;           
+	private static int numTests = 0;             
 	private static int numTestsPassed = 0;
 	private static int numTestsFailed = 0;  
 	private static LinkedHashMap<String, String> testResults = new LinkedHashMap<String, String>();
